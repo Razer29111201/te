@@ -1,0 +1,92 @@
+body {
+    background-image: linear-gradient(to right, rgb(125, 125, 255), rgb(252, 211, 218));
+    ;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login {
+    width: 350px;
+    border-radius: 5px;
+    background-color: hwb(204 96% 0%);
+    padding: 30px;
+}
+
+.login h1 {
+    text-align: center;
+    color: #0c83d6;
+}
+
+.form-group {
+    margin-top: 30px;
+
+}
+
+
+
+.form-group input {
+    width: 90%;
+    margin-top: 10px;
+    height: 40px;
+    padding: 0 20px;
+    outline: none;
+    border: none;
+    border-radius: 10px;
+    background-color: #eeeeee;
+    color: #474747;
+    font-size: 16px;
+}
+
+.form-group input::placeholder {
+    color: #949494;
+    font-size: 14px;
+}
+
+.form-group button {
+    height: 40px;
+    padding: 0 20px;
+    color: #333;
+    border: none;
+    cursor: pointer;
+    background-color: #7aa9ca;
+    color: #fff;
+    margin: 0 0 0 69%;
+    border-radius: 5px;
+}
+
+.form-group button:hover {
+    background-color: #0c83d6;
+    color: #fff;
+}
+
+.forgot-password {
+    text-align: right;
+}
+
+.forgot-password a {
+    text-decoration: none;
+    color: #333;
+    font-size: 14px;
+}
+
+.forgot-password a:hover {
+    color: #0c83d6;
+}
+
+.register {
+    text-align: center;
+    margin-top: 100px;
+    color: #333;
+    font-size: 14px;
+}
+
+.register a {
+    text-decoration: none;
+    color: #333;
+}
+
+.register a:hover {
+    color: #0c83d6;
+}

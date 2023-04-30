@@ -1,0 +1,52 @@
+<div class="cskh">
+    <div class="cskh-item">
+        <img src="https://lh4.googleusercontent.com/-r2RhL8IXDBg/XPXFTenKnlI/AAAAAAAAIqQ/ryIXUnYf5RgLoMgMn4Pyd5j_DTLgDl-fACLcBGAs/s1600/policy_images_1.png"
+            alt="">
+        <div class="cskh-body">
+            <h3>Miễn Phí Vận Chuyển</h3>
+            <p>Cho Các Đơn Hàng > 5tr</p>
+        </div>
+    </div>
+
+    <div class="cskh-item">
+        <img src="https://lh4.googleusercontent.com/-r2RhL8IXDBg/XPXFTenKnlI/AAAAAAAAIqQ/ryIXUnYf5RgLoMgMn4Pyd5j_DTLgDl-fACLcBGAs/s1600/policy_images_1.png"
+            alt="">
+        <div class="cskh-body">
+            <h3>Hỗ trợ 24/7</h3>
+            <p>Liên hệ hỗ trợ 24h/ngày</p>
+        </div>
+    </div>
+
+    <div class="cskh-item">
+        <img src="https://lh4.googleusercontent.com/-XRqhM2tC-4Q/XPXFa3Bd6zI/AAAAAAAAIqY/Z30_GU9UmJEH4WFYTCkhXiCDtvZzJhIUQCLcBGAs/s1600/policy_images_2.png"
+            alt="">
+        <div class="cskh-body">
+            <h3>Hoàn tiền 100%</h3>
+            <p>Nếu sản phẩm bị lỗi, hư hỏng</p>
+        </div>
+    </div>
+
+    <div class="cskh-item">
+        <img src="https://lh4.googleusercontent.com/-RvQwJPz0knE/XPXFmbbfOiI/AAAAAAAAIqc/qRKoO6XIwuYHvM6LDWrtr2E_I7h4MB-9ACLcBGAs/s1600/policy_images_3.png"
+            alt="">
+        <div class="cskh-body">
+            <h3>Thanh toán</h3>
+            <p>Được bảo mật 100%</p>
+        </div>
+    </div>
+</div>
+<div class="product-news">
+    <h3>
+        Tin Mới Nhất
+    </h3>
+    <ul class="news-list">
+        <% for (var i=1; i <=3; i++ ) { %>
+            <li class="news-item">
+                <i class='bx bx-chevron-right right'></i>
+                <a href=" <%= news[i].id %>">
+                    <%= news[i].Title %>
+                </a>
+            </li>
+            <% } %>
+    </ul>
+</div>

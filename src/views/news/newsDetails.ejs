@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
+        integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/css/news/newsDetail.css">
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/grid.css">
+    <link rel="stylesheet" href="/css/animation.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>Document</title>
+</head>
+
+<body>
+    <%- include('../partials/header'); %>
+        <div class="grid wide">
+
+
+            <div class="row">
+                <div class="col m--9">
+                    <div class="product-link" style="line-height: 2;">
+                        <a href="">Trang chủ</a>
+                        <i class="fa fa-caret-right fa-fw"></i>
+                        <a href="">Sản Phẩm</a>
+                        <i class="fa fa-caret-right fa-fw"></i>
+                        <a href="">
+                            <%= newss.Title %>
+                        </a>
+
+                    </div>
+                    <div class="news-body">
+                        <h2 class="new-title">
+                            <%= newss.Title %>
+                        </h2>
+                        <div class="interactive-socail">
+                            <div class="like">
+                                <button>
+                                    <i class='bx bx-like'></i>
+                                    like
+                                    <span>0</span>
+                                </button>
+
+                                <button class="share">
+                                    Share
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <% if (newss) { %>
+                        <div class="new">
+                            <div class="new-content">
+                                <%- newss.Content %>
+                            </div>
+                        </div>
+                        <% } %>
+                            <div class="new-extend">
+                                <h2>Xem thêm</h2>
+                                <ul class="news-extend-list">
+                                    <% for (var i=1; i <=3; i++ ) { %>
+                                        <li class="news-extend-item">
+                                            <i class='bx bx-chevron-right right'></i>
+                                            <a href="/news/<%= news[i].id %>">
+                                                <%= news[i].Title %>
+                                            </a>
+                                        </li>
+                                        <% } %>
+                                </ul>
+                            </div>
+                            <div class="new-review">
+
+                                <div class="comment">
+                                    <div class="fb-comments" data-href="http://localhost:8080/news/2" data-width="100%"
+                                        data-numposts="10"></div>
+
+                                </div>
+
+                            </div>
+                </div>
+                <div class="col m--3">
+                    <%- include('../partials/sidebar'); %>
+                </div>
+            </div>
+        </div>
+        </div>
+        <div id="footer">
+            <%- include('../partials/footer'); %>
+
+
+                <script async defer crossorigin="anonymous"
+                    src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v16.0&appId=954914929286425&autoLogAppEvents=1"
+                    nonce="Je2c3d78"></script>
+                <script src="app.js"></script>
+                <script src="/asset/app-login.js"></script>
+</body>
+
+</html>

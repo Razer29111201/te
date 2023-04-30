@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/account/login.css">
+    <title>Đăng Nhập</title>
+</head>
+
+<body>
+    <div class="login">
+        <form action="/account/jwtAcc" method="post" class="login-form">
+            <h1>Đăng Nhập</h1>
+            <div class="form-group">
+
+                <input type="text" placeholder="Hãy Nhập Tài Khoản" name="user">
+                <small id="errvalue"></small>
+            </div>
+            <div class="form-group">
+
+                <input type="password" placeholder="Hãy Nhập Mật Khẩu" name="pass">
+                <small id="errvalue"></small>
+            </div>
+            <div class="form-group">
+                <button class="btn-submit" type="submit" onclick="login()">Đăng Nhập</button>
+
+            </div>
+        </form>
+
+        <p class="forgot-password"><a href="?"> Quên Mật Khẩu?</a></p>
+        <div class="register">
+            Bạn Chưa Có Tài Khoản?
+            <a href="account/register">Đăng Ký Ngay</a>
+        </div>
+    </div>
+    <script src="/js/jquery-3.6.3.min.js"></script>
+    <script src="/js/acc.js"></script>
+    <script src="/js/index.js"></script>
+    <script>
+
+    </script>
+</body>
+
+</html>

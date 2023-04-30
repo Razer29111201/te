@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
+        integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/css/product/product.css">
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/grid.css">
+    <link rel="stylesheet" href="/css/animation.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>Document</title>
+</head>
+
+<body>
+    <%- include('../partials/header'); %>
+        <div class="grid wide">
+
+            <div class="row">
+                <div class="col m--9">
+                    <div class="product-link">
+                        <a href="">Trang chủ</a>
+                        <i class="fa fa-caret-right fa-fw"></i>
+                        <a href="">Sản Phẩm</a>
+                        <i class="fa fa-caret-right fa-fw"></i>
+                        <a href="">Cây Hoa Hồng Môn</a>
+                    </div>
+                    <div class="product-title">
+                        <h1>Cây Hoa Hồng Môn</h1>
+                        <div class="product-vote">
+                            <i class='bx bxs-star'></i>
+                            <i class='bx bxs-star'></i>
+                            <i class='bx bxs-star'></i>
+                            <i class='bx bxs-star'></i>
+                            <i class='bx bxs-star'></i>
+                            <span>Sản Phẩm Được Đánh Giá Tốt</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col m--6">
+                            <div class="product-img">
+                                <img src="/<%= product.img %>" alt="">
+
+                            </div>
+                        </div>
+                        <div class="col m--6">
+                            <div class="product-price">
+                                <h2>
+                                    <%= product.offprice %>đ
+                                </h2>
+                                <div class="product-sale">
+                                    <span class="product-oldprice">Giá thị trường: <span class="oldprice">
+                                            <%= product.price %>
+                                        </span></span>
+                                    <span class="price-save">Sale: <span style="color: red;">
+                                            <%= product.discount %>%
+                                        </span> </span>
+                                </div>
+                                <div class="product-id">
+                                    <span class="id-title">Mã Sản Phẩm:</span>
+                                    <span class="id">HT01</span>
+                                </div>
+                                <div class="product-describe">
+                                    <p class="product-name"><strong>Tên cây:</strong>
+                                        <%= product.productname %>
+                                    </p>
+                                    <p class="product-size"><strong>Kích thước:</strong>
+                                        <%= product.size %>
+                                    </p>
+                                    <p><strong>Giá trên bao gồm:</strong>
+                                        <%= product.Price_includes %>
+                                    </p>
+                                </div>
+                                <div class="product-buy">
+                                    <input type="number" min="1" max="10" value="1">
+                                    <button>
+                                        <i class='bx bx-cart-add'></i>
+                                        MUA NGAY
+                                    </button>
+                                </div>
+                                <div class="hotline">
+                                    <span>Gọi điện để được tư vấn:</span>
+                                    <span class="numberphone">0123 456 789</span>
+                                </div>
+                                <div class="product-pay">
+                                    <span>Chấp nhận thanh toán bằng:</span>
+                                    <img src="https://lh4.googleusercontent.com/-z0_04ruTgrI/XPemfvmJykI/AAAAAAAAIwM/6KRXVDXpc7UwUBo2rmLDHEaoo7butWS-wCLcBGAs/s200/payment-1.png"
+                                        alt="">
+                                    <img src="https://lh4.googleusercontent.com/-wd8DmF4NB1Q/XPem2BRZhdI/AAAAAAAAIwU/kTENj2zDA9AIAg2TAJF3_6j8Bn28UO_CwCLcBGAs/s200/payment-2.png"
+                                        alt="">
+                                    <img src="https://lh4.googleusercontent.com/-qPzC-vKIIu4/XPenC5HMVZI/AAAAAAAAIwY/Eib8yeAzsXgzeIVfLv3W1OhvmzNuDfwzgCLcBGAs/s200/payment-3.png"
+                                        alt="">
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col m--12">
+                            <!-- Tab items -->
+                            <div class="tabs">
+                                <div class="tab-item active ">
+
+                                    Mô Tả
+                                </div>
+                                <div class="tab-item">
+
+                                    NHẬN XÉT SẢN PHẨM
+                                </div>
+
+                                <div class="line"></div>
+                            </div>
+
+                            <!-- Tab content -->
+                            <div class="content">
+
+                                <div class="tab-content active">
+                                    <div>
+                                        <div style="position: relative;">
+
+                                            <%- product.summary %>
+                                        </div>
+                                        <div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-content">
+                                    <div class="fb-comments" data-href="http://localhost:8080/product/<%= product.id %>"
+                                        data-width="100%" data-numposts="10"></div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+
+                    <div class="col m--12 xemthem">
+                        <h2>Xem thêm</h2>
+                        <div></div>
+                    </div>
+                    <div class="row">
+
+                        <% for (var i=1; i <=8; i++ ) { %>
+                            <div class="col m--3">
+                                <div class="pay-item">
+                                    <a href=" /product/<%=products[i].id %>">
+                                        <img src="/<%=products[i].img %>" alt=""></a>
+
+                                    <div class="add-card">
+                                        <div class="add">
+                                            <i class='bx bx-cart-add'></i>
+                                        </div>
+                                        <div class="search">
+                                            <i class='bx bx-search-alt-2'></i>
+                                        </div>
+
+                                    </div>
+                                    <div class="pay-title">
+                                        <div class="tiyle">
+                                            <a href=" /product/<%=products[i].id %>">
+                                                <p>
+                                                    <%=products[i].productname %>
+                                                </p>
+                                            </a>
+                                        </div>
+
+                                        <div class="pay-pay">
+                                            <p>
+                                                <%=products[i].offprice %>
+                                            </p>
+                                            <p>
+                                                <%=products[i].price %>
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <% } %>
+                    </div>
+                </div>
+
+
+                <div class="col m--3 ">
+
+                    <%- include('../partials/sidebar'); %>
+                </div>
+
+            </div>
+        </div>
+
+
+
+        <%- include('../partials/footer'); %>
+            <script
+                src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v16.0&appId=954914929286425&autoLogAppEvents=1"
+                nonce="QzPghVP2"></script>
+            <script src="app.js"></script>
+            <script src="/asset/app-login.js"></script>
+            <script>
+                var itemLi = document.querySelectorAll('.tab-item')
+                var news = document.querySelectorAll('.tab-content')
+                console.log(news);
+
+                function dashboard(index) {
+                    itemLi.forEach(item => {
+                        item.classList.remove('active')
+                    })
+                    news.forEach(item => {
+                        item.classList.add('hiden')
+                    })
+
+                    news[index].classList.remove('hiden')
+                    itemLi[index].classList.add('active')
+
+                }
+                itemLi.forEach((ieli, index) => {
+                    ieli.onclick = function () {
+                        dashboard(index)
+                    }
+                })
+            </script>
+</body>
+
+</html>

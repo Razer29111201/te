@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
+        integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/css/product/product.css">
+    <link rel="stylesheet" href="/css/news/news.css">
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/grid.css">
+    <link rel="stylesheet" href="/css/animation.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>Document</title>
+</head>
+
+<body>
+    <%- include('../partials/header'); %>
+        <div class="grid wide">
+
+            <div class="product-link">
+                <a href="/index.html">Trang chủ</a>
+                <i class="fa fa-caret-right fa-fw"></i>
+                <a href="">Sản Phẩm</a>
+
+            </div>
+            <div class="row">
+                <div class="col m--3 cate">
+
+                    <div class="Category">
+                        <div class="Category-heading">
+                            <h2>Danh Mục</h2>
+                        </div>
+                        <ul class="category-list">
+                            <li class="categoty-item">
+
+                                <a href=""> <i class='bx bxs-right-arrow'></i>Tiểu Cảnh Để Bàn</a>
+
+                                <i class='bx bxs-chevron-down down'>
+
+                                </i>
+                                <ul class="category-focus">
+                                    <a href="">
+                                        <li>Tiểu Cảnh Terrarium</li>
+                                    </a>
+
+                                </ul>
+                            </li>
+                            <li class="categoty-item">
+
+                                <a href=""> <i class='bx bxs-right-arrow'></i>Chậu Cảnh Để Bàn</a>
+
+                                <i class='bx bxs-chevron-down down'></i>
+                                <ul class="category-focus">
+                                    <a href="">
+                                        <li>Tiểu Cảnh Terrarium</li>
+                                    </a>
+
+                                </ul>
+                            </li>
+                            <li class="categoty-item">
+
+                                <a href=""> <i class='bx bxs-right-arrow'></i> Cây Cảnh Mini</a>
+
+                                <i class='bx bxs-chevron-down down'></i>
+                                <ul class="category-focus">
+                                    <a href="">
+                                        <li>Tiểu Cảnh Terrarium</li>
+                                    </a>
+
+                                </ul>
+                            </li>
+                            <li class="categoty-item">
+
+                                <a href="">
+                                    <i class='bx bxs-right-arrow'></i>
+                                    Phụ Kiện Trang Trí
+                                </a>
+
+                                <i class='bx bxs-chevron-down down'></i>
+                                <ul class="category-focus">
+                                    <a href="">
+                                        <li>Tiểu Cảnh Terrarium</li>
+                                    </a>
+
+                                </ul>
+                            </li>
+                            <li class="categoty-item">
+
+                                <a href=""> <i class='bx bxs-right-arrow'></i>Chậu trồng cây</a>
+
+                                <i class='bx bxs-chevron-down down'></i>
+                                <ul class="category-focus">
+                                    <a href="">
+                                        <li>Tiểu Cảnh Terrarium</li>
+                                    </a>
+
+                                </ul>
+                            </li>
+                            <li class="categoty-item">
+
+                                <a href=""> <i class='bx bxs-right-arrow'></i>Hoa chậu</a>
+
+                                <i class='bx bxs-chevron-down down'></i>
+                                <ul class="category-focus">
+                                    <a href="">
+                                        <li>Tiểu Cảnh Terrarium</li>
+                                    </a>
+
+                                </ul>
+                            </li>
+
+
+                        </ul>
+
+                        <div class="most-views">
+                            <div class="Category-heading">
+                                <h2>Xem Nhiều Nhất</h2>
+                            </div>
+                            <div class="most-views-list">
+                                <% for (var i=1; i < news.length; i++ ) { %>
+                                    <div class="most-views-item">
+                                        <img src="<%=news[i].img %>" alt="">
+                                        <div class="most-views-title">
+                                            <a href="/new/<%=news[i].id %>">
+                                                <%=news[i].Title %>
+                                            </a>
+                                            <p>Ngày đăng: <%=news[i].date %>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <% } %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col m--9">
+                    <div class="news-list">
+                        <h1>TIN TỨC</h1>
+                        <% for (var i=0; i < news.length; i++ ) { %>
+                            <div class="news-item">
+                                <a href="./Tin-1.html"><img src=" <%=news[i].img %>" alt=""></a>
+                                <div class="new-item-content">
+                                    <a href="/news/<%=news[i].id %>">
+                                        <h2>
+                                            <%=news[i].Title %>
+                                        </h2>
+                                    </a>
+                                    <div>
+                                        <i class='bx bxs-user'></i>
+                                        Admin
+                                        <i class='bx bx-calendar'></i>
+                                        <%=news[i].date %>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                            <% } %>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <%- include('../partials/footer.ejs'); %>
+
+
+            <script src="/category/app.js"></script>
+            <script src="/asset/app-login.js"></script>
+</body>
+
+</html>

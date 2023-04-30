@@ -1,0 +1,46 @@
+.contact {
+    margin-top: 40px;
+}
+
+.contact h1 {
+    font-size: 30px;
+    color: var(--primary-color);
+}
+
+.contact-question {
+    margin-top: 20px;
+
+}
+
+.question-list {
+
+    line-height: 2;
+}
+
+.question-list p {
+    font-size: 18px;
+    margin-bottom: 10;
+}
+
+.question-item {
+    margin-left: 20px;
+    font-size: 16px;
+}
+
+.question-list1 {
+    line-height: 2;
+    list-style: none;
+
+}
+
+.question-list1 p {
+    font-size: 18px;
+    margin-bottom: 10px;
+
+}
+
+.question-list1 li {
+    margin-left: 20px;
+    font-size: 16px;
+    margin: 0;
+}

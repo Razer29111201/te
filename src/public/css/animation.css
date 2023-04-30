@@ -1,0 +1,85 @@
+@keyframes slide {
+    to {
+        margin-left: 0%;
+
+    }
+
+    from {
+        margin-left: 1160px;
+    }
+
+}
+
+@keyframes slide2 {
+    to {}
+
+    from {
+        transform: translateX(-1160px);
+    }
+
+}
+
+@keyframes slide1 {
+    0% {
+        top: 70%;
+        opacity: 0;
+
+    }
+
+    100% {
+        opacity: 1;
+        top: 50%;
+    }
+
+}
+
+@keyframes paymoveleft {
+    to {
+        transform: translateX(306px);
+    }
+
+    from {}
+}
+
+@keyframes paymoveright {
+    to {
+        margin-left: -306px;
+    }
+
+    from {}
+}
+
+@keyframes addcard {
+    from {
+        transform: translateX();
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(-60px);
+        opacity: 1;
+    }
+}
+
+@keyframes showModal {
+    from {
+        top: -400px;
+        opacity: 0;
+    }
+
+    to {
+        top: -100px;
+        opacity: 1;
+    }
+}
+
+@keyframes drowdown {
+    from {
+        opacity: 0;
+        transform: translateY(3rem);
+    }
+
+    to {
+        opacity: 1;
+    }
+}

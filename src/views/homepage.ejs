@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
+        integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/grid.css">
+    <link rel="stylesheet" href="/css/animation.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>Trang Chủ</title>
+</head>
+
+<body>
+
+
+
+    <%- include('./partials/header'); %>
+        <div class="grid wide">
+            <div class="row">
+                <div class="body">
+
+                    <!-- banner -->
+                    <div class="body-slide">
+                        <div id="carouselExampleLight" class="carousel carousel-light slide" data-bs-ride="carousel">
+                            <div class="carousel-indicators">
+                                <button type="button" data-bs-target="#carouselExampleLight" data-bs-slide-to="0"
+                                    class="active" aria-current="true" aria-label="Slide 1"></button>
+                                <button type="button" data-bs-target="#carouselExampleLight" data-bs-slide-to="1"
+                                    aria-label="Slide 2"></button>
+                                <button type="button" data-bs-target="#carouselExampleLight" data-bs-slide-to="2"
+                                    aria-label="Slide 3"></button>
+                            </div>
+                            <div class="carousel-inner">
+                                <div class="carousel-item active" data-bs-interval="3000">
+                                    <img src="https://lh4.googleusercontent.com/-iLlx-SyS1Dw/XPdPP-tyRnI/AAAAAAAAIv0/cSTNmIlTkeI3ZVn5gsCM9MjHQjLiB3TywCLcBGAs/s1600/slide-mobile.jpg"
+                                        class="d-block w-100" alt="...">
+
+                                </div>
+                                <div class="carousel-item" data-bs-interval="3000">
+                                    <img src="https://lh4.googleusercontent.com/-iLlx-SyS1Dw/XPdPP-tyRnI/AAAAAAAAIv0/cSTNmIlTkeI3ZVn5gsCM9MjHQjLiB3TywCLcBGAs/s1600/slide-mobile.jpg"
+                                        class="d-block w-100" alt="...">
+
+                                </div>
+                                <div class="carousel-item" data-bs-interval="3000">
+                                    <img src="https://lh4.googleusercontent.com/-iLlx-SyS1Dw/XPdPP-tyRnI/AAAAAAAAIv0/cSTNmIlTkeI3ZVn5gsCM9MjHQjLiB3TywCLcBGAs/s1600/slide-mobile.jpg"
+                                        class="d-block w-100" alt="...">
+
+                                </div>
+                            </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleLight"
+                                data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleLight"
+                                data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                        </div>
+                        <div class="slide_dark">
+                            <h1>Tân Trang Nhà Cửa</h1>
+                            <div class="slide_hr"></div>
+                            <div class="slide_title">
+                                <p> Ant Garden mang đến cho không gian của bạn những chậu cây mini sáng tạo, độc
+                                    đáo.<br>
+                                    Giúp mọi người hòa hợp với thiên nhiên hơn.
+
+                                </p>
+                            </div>
+                            <div class="slide_btn">
+                                <button>Xem Chi Tiết</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tree-sale">
+
+                        <div class="row">
+                            <% for(var i=0; i < 3 ; i++) {%>
+
+
+                                <div class=" sale-item col m--4">
+                                    <div class="sale-item--img">
+                                        <img src="<%= disinfo[i].img %>" alt="">
+                                    </div>
+
+
+
+                                </div>
+
+
+                                <% } %>
+
+                        </div>
+
+
+                    </div>
+                    <div class="pay-tree">
+                        <h2>Sản Phẩm Mới</h2>
+                        <div class="pay-directional">
+                            <div class="directional left">
+                                <i class='bx bx-chevron-left'></i>
+                            </div>
+                            <div class="directional right">
+                                <i class='bx bx-chevron-right'></i>
+                            </div>
+                        </div>
+                        <div class="hr"></div>
+                        <div class="list-pay">
+                            <div class="row">
+                                <% for (var i=1; i <=5; i++ ) { %>
+                                    <div class="pay-item col m-2-5">
+                                        <a href="/product/<%= product[i].id %>"><img src="<%= product[i].img %>"
+                                                alt=""></a>
+
+                                        <div class="add-card">
+                                            <div class="add">
+
+                                                <input class="input" type="text" value="<%= product[i].id %>" hidden>
+                                                <i class='bx bx-cart-add btn'></i>
+
+
+                                            </div>
+                                            <div class="search">
+                                                <i class='bx bx-search-alt-2'></i>
+                                            </div>
+
+                                        </div>
+                                        <div class="pay-title">
+                                            <div class="tiyle">
+                                                <a href="/product/<%= product[i].id %>">
+                                                    <p>
+                                                        <%= product[i].productname %>
+                                                    </p>
+                                                </a>
+                                            </div>
+
+                                            <div class="pay-pay">
+                                                <p>
+                                                    <%= product[i].offprice %> đ
+                                                </p>
+                                                <p>
+                                                    <%= product[i].price %> đ
+                                                </p>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <% } %>
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="banner1">
+                        <div class="row">
+                            <div class="banner1-item banner1-item1 col m--5">
+                                <h3>Cây Phong Cảnh</h3>
+                                <h4>Hợp Phong Thủy</h4>
+                                <p>Hãy đi tìm loài cây mang lại tài lộc, may mắn cho gia chủ trong năm 2019</p>
+                                <button>Khám Phá Ngay </button>
+                            </div>
+                            <div class="banner1-item banner1-item2 col m--7">
+                                <a href="">
+                                    <img src="https://lh4.googleusercontent.com/-95X2yJ7d_fk/XPZ5dd78rZI/AAAAAAAAItw/vV8GGMVleVkxIuDf4s0r9UGXlVeh1BHXQCLcBGAs/s1600/compressed-m5ho.jpg"
+                                        alt="">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tieucanh">
+                        <div class="tieucanh-title">
+                            <h2>Tiêu Cảnh Để Bàn</h2>
+                        </div>
+                        <div class="row">
+
+                            <div class="tieucanh-item col m-4-2">
+                                <img src="https://lh4.googleusercontent.com/-pC_axC7OX4U/XPct-vUB82I/AAAAAAAAIuo/X1X0m_6kpx8gjR-RtBWeJvov_5da-mKrQCLcBGAs/s1600/compressed-jfiy.jpg"
+                                    alt="">
+
+                            </div>
+                            <% for (var i=1; i < 9; i++ ) { %>
+                                <div class="tieucanh-item col m-2-5">
+                                    <a href="/product/<%= product[i].id %>"><img src="<%= product[i].img %>
+                                " alt=""></a>
+
+                                    <div class="add-card">
+                                        <input class="input" type="text" value="<%= product[i].id %>" hidden>
+                                        <div class="add">
+                                            <i class='bx bx-cart-add btn'></i>
+                                        </div>
+                                        <div class="search">
+                                            <i class='bx bx-search-alt-2'></i>
+                                        </div>
+
+                                    </div>
+                                    <div class="pay-title">
+                                        <div class="tiyle">
+                                            <a href="/product/<%= product[i].id %>">
+                                                <p>
+                                                    <%= product[i].productname %>
+                                                </p>
+                                            </a>
+
+                                        </div>
+
+                                        <div class="pay-pay">
+                                            <p>
+                                                <%= product[i].offprice %> đ
+                                            </p>
+                                            <p>
+                                                <%= product[i].price %> đ
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <% } %>
+
+                        </div>
+                    </div>
+                    <div class="noibat">
+                        <div class="noibat-title">
+                            <h2>Danh Mục Nổi Bật</h2>
+                        </div>
+                        <div class="row noibat-list">
+                            <div class="noibat-item col m--3">
+                                <img src="https://lh4.googleusercontent.com/-16MS-MbCgx8/XPcsyTh1qrI/AAAAAAAAIuQ/f6We2zwEn3ohZVWnsXMPA7b3mwT55mlGwCLcBGAs/s1600/optimized-gsiq.jpg"
+                                    alt="">
+                                <div class="noibat-btn">
+
+                                    <a href="./category/category.html"><button>Tiêu Cảnh Để Bàn</button></a>
+                                </div>
+                            </div>
+                            <div class="noibat-item col m--3">
+                                <img src="https://lh4.googleusercontent.com/-sr_sPPDg4_M/XPcvz47Bo7I/AAAAAAAAIvE/omXguOdNpa4bz1Ck5UTP4uw5dWPDvS4FwCLcBGAs/s1600/optimized-c856.jpg"
+                                    alt="">
+                                <div class="noibat-btn">
+                                    <a href="./category/category.html"><button>Chậu Cảnh Để Bàn</button></a>
+                                </div>
+                            </div>
+                            <div class="noibat-item col m--3">
+                                <img src="https://lh4.googleusercontent.com/-ezJYmmIiiEY/XPcvL5XuqFI/AAAAAAAAIu0/AYjoKjvhJfQs-bu_QBLgy_RIdRs2aIhJACLcBGAs/s1600/optimized-uo6j.jpg"
+                                    alt="">
+                                <div class="noibat-btn">
+                                    <a href="./category/category.html"><button>Cậu Cảnh Mini</button></a>
+                                </div>
+                            </div>
+                            <div class="noibat-item col m--3">
+                                <img src="https://lh4.googleusercontent.com/-KFZBcmdgL6g/XPcttOcHKfI/AAAAAAAAIug/j9R4y1xaL3kF-5SGQGxYnaAFM3F0t6L_ACLcBGAs/s1600/compressed-jp4v.jpg"
+                                    alt="">
+                                <div class="noibat-btn">
+                                    <a href="./category/category.html"><button>Phụ Kiện Trang Trí</button></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="care">
+                        <div class="noibat-title">
+                            <h2>Chăm sóc cây cảnh</h2>
+                        </div>
+                        <div class="row">
+                            <% for (var i=1; i < 4; i++ ) { %>
+                                <div class="care-item col m--4">
+                                    <a href="/news/<%= news[i].id %>"><img src="<%= news[i].img %> "
+                                            alt="NASA đã công bố cây lưỡi hổ có tác dụng thanh lọc không khí rất tốt, chúng hấp thụ các chất gây ô nhiễm môi trường">
+                                    </a>
+                                    <div class="care-body">
+                                        <a href="/news/<%= news[i].id %>">
+                                            <h3>
+                                                <%= news[i].Title %>
+                                            </h3>
+                                        </a>
+                                        <div class="date-care">Ngày Đăng: <%= news[i].date %>
+                                        </div>
+                                    </div>
+                                </div>
+                                <% } %>
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+            </div>
+        </div>
+        </div>
+        <%- include('./partials/footer'); %>
+
+
+
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+                crossorigin="anonymous"></script>
+            <script src="/js/app.js"></script>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+            <script src="/js/cart.js">
+
+
+            </script>
+
+
+            </script>
+</body>
+
+</html>

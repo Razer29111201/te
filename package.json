@@ -1,0 +1,39 @@
+{
+  "name": "selling_flower",
+  "version": "1.0.0",
+  "description": "mnm",
+  "main": "./src/sever.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon --exec babel-node src/sever.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Viet2911/selling_flower.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Viet2911/selling_flower/issues"
+  },
+  "homepage": "https://github.com/Viet2911/selling_flower#readme",
+  "dependencies": {
+    "@babel/cli": "^7.21.0",
+    "@babel/core": "^7.21.4",
+    "@babel/node": "^7.20.7",
+    "@babel/preset-env": "^7.21.4",
+    "body-parser": "^1.20.2",
+    "bootstrap": "^5.3.0-alpha3",
+    "cookie-parser": "^1.4.6",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "fb": "^2.0.0",
+    "fbjs": "^3.0.4",
+    "graphql": "^16.6.0",
+    "jsonwebtoken": "^9.0.0",
+    "multer": "^1.4.5-lts.1",
+    "mysql2": "^3.2.3",
+    "nodemon": "^2.0.22",
+    "sass": "^1.62.0"
+  }
+}
