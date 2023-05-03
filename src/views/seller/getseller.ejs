@@ -5,232 +5,334 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/seller/seller.css">
+    <link rel="stylesheet" href="/css/grid.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <title>Document</title>
 
 </head>
 
 <body>
+    <%- include('../partials/header'); %>
+        <div class="grid wide">
+            <h1>Thêm Sản Phẩm</h1>
 
-    <form action="seller/setproduct" method="post" enctype="multipart/form-data">
+            <form action="seller/setproduct" method="post" enctype="multipart/form-data">
+                <div class="form_group">
+                    <label for="">Tên Sản Phẩm: </label>
+                    <input type="text" name="name" placeholder="Tên Sản Phẩm">
+                </div>
 
-        <div class="form_groud">
-            <input type="text" name="name" placeholder="Tên Sản Phẩm">
+                <div class="form_group">
+                    <label for="">Giá Tiền Sản Phẩm : </label>
+                    <input type="text" name="price" placeholder="Giá Tiền Sản Phẩm">
+                </div>
+
+                <div class="form_group">
+                    <label for="">Giảm Giá: </label>
+                    <input type="text" name="Discout" placeholder="Giảm Giá">
+                </div>
+
+                <div class="form_group">
+                    <label for="">Danh Mục: </label>
+                    <div class="custom-select">
+
+                        <select name="category" id="">
+                            <option value="1">Tiểu Cảnh Để Bàn</option>
+                            <option value="2">Cây Cảnh Mini</option>
+                            <option value="3">Phụ Kiện TRang Trí</option>
+                            <option value="4">Chậu Cảnh Để Bàn</option>
+                            <option value="5">Chậu Cây Trồng</option>
+                            <option value="6">Hoa Chậu</option>
+                            <option value="7">Cây Công Trình</option>
+                        </select>
+                    </div>
+
+                </div>
+
+                <div class="form_group">
+                    <label for="">Giá Trên Bao Gồm: </label>
+                    <input type="text" name="Price_includes" placeholder="Giá Trên Bao Gồm">
+                </div>
+                <div class="form_group">
+                    <label for="">Hàng Trong Kho: </label>
+                    <input type="text" name="warehouse" placeholder="Hàng Trong Kho">
+                </div>
+
+                <div class="form_group">
+                    <label for="">Kích Thước: </label>
+                    <input type="text" name="summary" placeholder="Kích Thước">
+                </div>
+                <div class="form_group">
+                    <label for="">Hình Ảnh: </label>
+                    <input type="file" name="img" id="file-input" style=" border: none;">
+                </div>
+                <div class="form_group">
+                    <label for="img-preview">Preview: : </label>
+                    <img src="" alt="" id="img-preview">
+                </div>
+
+                <div class="form-group">
+                    <label for="">Mô Tả Sản Phẩm: </label>
+
+
+                    <textarea name="editor" id="editor" cols="30" rows="10" maxlength="1000000"></textarea>
+
+                </div>
+
+
+
+
+
+
+
+
+                <div class="btn">
+                    <input type="submit" placeholder="Nội DUng Tóm Tắt">
+                </div>
+
+
+            </form>
         </div>
 
-        <div class="form_groud">
-            <input type="text" name="price" placeholder="Giá Tiền Sản Phẩm">
-        </div>
 
-        <div class="form_groud">
-            <input type="text" name="Discout" placeholder="Giảm Giá">
-        </div>
-
-        <div class="form_groud">
-            <select name="category" id="">
-                <option value="1">Tiểu Cảnh Để Bàn</option>
-                <option value="2">Cây Cảnh Mini</option>
-                <option value="3">Phụ Kiện TRang Trí</option>
-                <option value="4">Chậu Cảnh Để Bàn</option>
-                <option value="5">Chậu Cây Trồng</option>
-                <option value="6">Hoa Chậu</option>
-                <option value="7">Cây Công Trình</option>
-            </select>
-
-        </div>
-
-        <div class="form_groud">
-            <input type="text" name="Price_includes" placeholder="Giá Trên Bao Gồm">
-        </div>
-        <div class="form_groud">
-            <input type="text" name="warehouse" placeholder="Hàng Trong Kho">
-        </div>
-
-        <div class="form_groud">
-            <input type="text" name="summary" placeholder="Nội DUng Tóm Tắt">
-        </div>
-        <div class="form_groud">
-            <input type="file" name="img" id="file-input" placeholder="Nội DUng Tóm Tắt">
-        </div>
-        <div class="form-groud">
-            <div class="form-groud">
-
-
-
-                <textarea name="editor" id="editor" cols="30" rows="10" maxlength="1000000"></textarea>
-
-
-
-
-            </div>
-
-
-
-
-
-
-
-        </div>
-        <div class="form_groud">
-            <input type="submit" placeholder="Nội DUng Tóm Tắt">
-        </div>
-
-
-    </form>
-
-    <img src="" alt="" id="img-preview">
-    <script src="ckeditor/ckeditor.js"></script>
-    <script src="https://cdn.ckeditor.com/ckeditor5/37.1.0/super-build/ckeditor.js"></script>
-    <script src="js/seller/seller.js"></script>
-    <script>
-        // This sample still does not showcase all CKEditor 5 features (!)
-        // Visit https://ckeditor.com/docs/ckeditor5/latest/features/index.html to browse all the features.
-        CKEDITOR.ClassicEditor.create(document.getElementById("editor"), {
-            // https://ckeditor.com/docs/ckeditor5/latest/features/toolbar/toolbar.html#extended-toolbar-configuration-format
-            toolbar: {
-                items: [
-                    'exportPDF', 'exportWord', '|',
-                    'findAndReplace', 'selectAll', '|',
-                    'heading', '|',
-                    'bold', 'italic', 'strikethrough', 'underline', 'code', 'subscript', 'superscript', 'removeFormat', '|',
-                    'bulletedList', 'numberedList', 'todoList', '|',
-                    'outdent', 'indent', '|',
-                    'undo', 'redo',
-                    '-',
-                    'fontSize', 'fontFamily', 'fontColor', 'fontBackgroundColor', 'highlight', '|',
-                    'alignment', '|',
-                    'link', 'insertImage', 'blockQuote', 'insertTable', 'mediaEmbed', 'codeBlock', 'htmlEmbed', '|',
-                    'specialCharacters', 'horizontalLine', 'pageBreak', '|',
-                    'textPartLanguage', '|',
-                    'sourceEditing'
-                ],
-                shouldNotGroupWhenFull: true
-            },
-            // Changing the language of the interface requires loading the language file using the <script> tag.
-            // language: 'es',
-            list: {
-                properties: {
-                    styles: true,
-                    startIndex: true,
-                    reversed: true
+        <script src="ckeditor/ckeditor.js"></script>
+        <script src="https://cdn.ckeditor.com/ckeditor5/37.1.0/super-build/ckeditor.js"></script>
+        <script src="/js/seller/seller.js"></script>
+        <script>
+            var x, i, j, l, ll, selElmnt, a, b, c;
+            /* Look for any elements with the class "custom-select": */
+            x = document.getElementsByClassName("custom-select");
+            l = x.length;
+            for (i = 0; i < l; i++) {
+                selElmnt = x[i].getElementsByTagName("select")[0];
+                ll = selElmnt.length;
+                /* For each element, create a new DIV that will act as the selected item: */
+                a = document.createElement("DIV");
+                a.setAttribute("class", "select-selected");
+                a.innerHTML = selElmnt.options[selElmnt.selectedIndex].innerHTML;
+                x[i].appendChild(a);
+                /* For each element, create a new DIV that will contain the option list: */
+                b = document.createElement("DIV");
+                b.setAttribute("class", "select-items select-hide");
+                for (j = 1; j < ll; j++) {
+                    /* For each option in the original select element,
+                    create a new DIV that will act as an option item: */
+                    c = document.createElement("DIV");
+                    c.innerHTML = selElmnt.options[j].innerHTML;
+                    c.addEventListener("click", function (e) {
+                        /* When an item is clicked, update the original select box,
+                        and the selected item: */
+                        var y, i, k, s, h, sl, yl;
+                        s = this.parentNode.parentNode.getElementsByTagName("select")[0];
+                        sl = s.length;
+                        h = this.parentNode.previousSibling;
+                        for (i = 0; i < sl; i++) {
+                            if (s.options[i].innerHTML == this.innerHTML) {
+                                s.selectedIndex = i;
+                                h.innerHTML = this.innerHTML;
+                                y = this.parentNode.getElementsByClassName("same-as-selected");
+                                yl = y.length;
+                                for (k = 0; k < yl; k++) {
+                                    y[k].removeAttribute("class");
+                                }
+                                this.setAttribute("class", "same-as-selected");
+                                break;
+                            }
+                        }
+                        h.click();
+                    });
+                    b.appendChild(c);
                 }
-            },
-            // https://ckeditor.com/docs/ckeditor5/latest/features/headings.html#configuration
-            heading: {
-                options: [
-                    { model: 'paragraph', title: 'Paragraph', class: 'ck-heading_paragraph' },
-                    { model: 'heading1', view: 'h1', title: 'Heading 1', class: 'ck-heading_heading1' },
-                    { model: 'heading2', view: 'h2', title: 'Heading 2', class: 'ck-heading_heading2' },
-                    { model: 'heading3', view: 'h3', title: 'Heading 3', class: 'ck-heading_heading3' },
-                    { model: 'heading4', view: 'h4', title: 'Heading 4', class: 'ck-heading_heading4' },
-                    { model: 'heading5', view: 'h5', title: 'Heading 5', class: 'ck-heading_heading5' },
-                    { model: 'heading6', view: 'h6', title: 'Heading 6', class: 'ck-heading_heading6' }
-                ]
-            },
-            // https://ckeditor.com/docs/ckeditor5/latest/features/editor-placeholder.html#using-the-editor-configuration
-            placeholder: 'Welcome to CKEditor 5!',
-            // https://ckeditor.com/docs/ckeditor5/latest/features/font.html#configuring-the-font-family-feature
-            fontFamily: {
-                options: [
-                    'default',
-                    'Arial, Helvetica, sans-serif',
-                    'Courier New, Courier, monospace',
-                    'Georgia, serif',
-                    'Lucida Sans Unicode, Lucida Grande, sans-serif',
-                    'Tahoma, Geneva, sans-serif',
-                    'Times New Roman, Times, serif',
-                    'Trebuchet MS, Helvetica, sans-serif',
-                    'Verdana, Geneva, sans-serif'
-                ],
-                supportAllValues: true
-            },
-            // https://ckeditor.com/docs/ckeditor5/latest/features/font.html#configuring-the-font-size-feature
-            fontSize: {
-                options: [10, 12, 14, 'default', 18, 20, 22],
-                supportAllValues: true
-            },
-            // Be careful with the setting below. It instructs CKEditor to accept ALL HTML markup.
-            // https://ckeditor.com/docs/ckeditor5/latest/features/general-html-support.html#enabling-all-html-features
-            htmlSupport: {
-                allow: [
-                    {
-                        name: /.*/,
-                        attributes: true,
-                        classes: true,
-                        styles: true
+                x[i].appendChild(b);
+                a.addEventListener("click", function (e) {
+                    /* When the select box is clicked, close any other select boxes,
+                    and open/close the current select box: */
+                    e.stopPropagation();
+                    closeAllSelect(this);
+                    this.nextSibling.classList.toggle("select-hide");
+                    this.classList.toggle("select-arrow-active");
+                });
+            }
+
+            function closeAllSelect(elmnt) {
+                /* A function that will close all select boxes in the document,
+                except the current select box: */
+                var x, y, i, xl, yl, arrNo = [];
+                x = document.getElementsByClassName("select-items");
+                y = document.getElementsByClassName("select-selected");
+                xl = x.length;
+                yl = y.length;
+                for (i = 0; i < yl; i++) {
+                    if (elmnt == y[i]) {
+                        arrNo.push(i)
+                    } else {
+                        y[i].classList.remove("select-arrow-active");
                     }
-                ]
-            },
-            // Be careful with enabling previews
-            // https://ckeditor.com/docs/ckeditor5/latest/features/html-embed.html#content-previews
-            htmlEmbed: {
-                showPreviews: true
-            },
-            // https://ckeditor.com/docs/ckeditor5/latest/features/link.html#custom-link-attributes-decorators
-            link: {
-                decorators: {
-                    addTargetToExternalLinks: true,
-                    defaultProtocol: 'https://',
-                    toggleDownloadable: {
-                        mode: 'manual',
-                        label: 'Downloadable',
-                        attributes: {
-                            download: 'file'
+                }
+                for (i = 0; i < xl; i++) {
+                    if (arrNo.indexOf(i)) {
+                        x[i].classList.add("select-hide");
+                    }
+                }
+            }
+
+            /* If the user clicks anywhere outside the select box,
+            then close all select boxes: */
+            document.addEventListener("click", closeAllSelect);
+        </script>
+        <script>
+            // This sample still does not showcase all CKEditor 5 features (!)
+            // Visit https://ckeditor.com/docs/ckeditor5/latest/features/index.html to browse all the features.
+            CKEDITOR.ClassicEditor.create(document.getElementById("editor"), {
+                // https://ckeditor.com/docs/ckeditor5/latest/features/toolbar/toolbar.html#extended-toolbar-configuration-format
+                toolbar: {
+                    items: [
+                        'exportPDF', 'exportWord', '|',
+                        'findAndReplace', 'selectAll', '|',
+                        'heading', '|',
+                        'bold', 'italic', 'strikethrough', 'underline', 'code', 'subscript', 'superscript', 'removeFormat', '|',
+                        'bulletedList', 'numberedList', 'todoList', '|',
+                        'outdent', 'indent', '|',
+                        'undo', 'redo',
+                        '-',
+                        'fontSize', 'fontFamily', 'fontColor', 'fontBackgroundColor', 'highlight', '|',
+                        'alignment', '|',
+                        'link', 'insertImage', 'blockQuote', 'insertTable', 'mediaEmbed', 'codeBlock', 'htmlEmbed', '|',
+                        'specialCharacters', 'horizontalLine', 'pageBreak', '|',
+                        'textPartLanguage', '|',
+                        'sourceEditing'
+                    ],
+                    shouldNotGroupWhenFull: true
+                },
+                // Changing the language of the interface requires loading the language file using the <script> tag.
+                // language: 'es',
+                list: {
+                    properties: {
+                        styles: true,
+                        startIndex: true,
+                        reversed: true
+                    }
+                },
+                // https://ckeditor.com/docs/ckeditor5/latest/features/headings.html#configuration
+                heading: {
+                    options: [
+                        { model: 'paragraph', title: 'Paragraph', class: 'ck-heading_paragraph' },
+                        { model: 'heading1', view: 'h1', title: 'Heading 1', class: 'ck-heading_heading1' },
+                        { model: 'heading2', view: 'h2', title: 'Heading 2', class: 'ck-heading_heading2' },
+                        { model: 'heading3', view: 'h3', title: 'Heading 3', class: 'ck-heading_heading3' },
+                        { model: 'heading4', view: 'h4', title: 'Heading 4', class: 'ck-heading_heading4' },
+                        { model: 'heading5', view: 'h5', title: 'Heading 5', class: 'ck-heading_heading5' },
+                        { model: 'heading6', view: 'h6', title: 'Heading 6', class: 'ck-heading_heading6' }
+                    ]
+                },
+                // https://ckeditor.com/docs/ckeditor5/latest/features/editor-placeholder.html#using-the-editor-configuration
+                placeholder: 'Welcome to CKEditor 5!',
+                // https://ckeditor.com/docs/ckeditor5/latest/features/font.html#configuring-the-font-family-feature
+                fontFamily: {
+                    options: [
+                        'default',
+                        'Arial, Helvetica, sans-serif',
+                        'Courier New, Courier, monospace',
+                        'Georgia, serif',
+                        'Lucida Sans Unicode, Lucida Grande, sans-serif',
+                        'Tahoma, Geneva, sans-serif',
+                        'Times New Roman, Times, serif',
+                        'Trebuchet MS, Helvetica, sans-serif',
+                        'Verdana, Geneva, sans-serif'
+                    ],
+                    supportAllValues: true
+                },
+                // https://ckeditor.com/docs/ckeditor5/latest/features/font.html#configuring-the-font-size-feature
+                fontSize: {
+                    options: [10, 12, 14, 'default', 18, 20, 22],
+                    supportAllValues: true
+                },
+                // Be careful with the setting below. It instructs CKEditor to accept ALL HTML markup.
+                // https://ckeditor.com/docs/ckeditor5/latest/features/general-html-support.html#enabling-all-html-features
+                htmlSupport: {
+                    allow: [
+                        {
+                            name: /.*/,
+                            attributes: true,
+                            classes: true,
+                            styles: true
+                        }
+                    ]
+                },
+                // Be careful with enabling previews
+                // https://ckeditor.com/docs/ckeditor5/latest/features/html-embed.html#content-previews
+                htmlEmbed: {
+                    showPreviews: true
+                },
+                // https://ckeditor.com/docs/ckeditor5/latest/features/link.html#custom-link-attributes-decorators
+                link: {
+                    decorators: {
+                        addTargetToExternalLinks: true,
+                        defaultProtocol: 'https://',
+                        toggleDownloadable: {
+                            mode: 'manual',
+                            label: 'Downloadable',
+                            attributes: {
+                                download: 'file'
+                            }
                         }
                     }
-                }
-            },
-            // https://ckeditor.com/docs/ckeditor5/latest/features/mentions.html#configuration
-            mention: {
-                feeds: [
-                    {
-                        marker: '@',
-                        feed: [
-                            '@apple', '@bears', '@brownie', '@cake', '@cake', '@candy', '@canes', '@chocolate', '@cookie', '@cotton', '@cream',
-                            '@cupcake', '@danish', '@donut', '@dragée', '@fruitcake', '@gingerbread', '@gummi', '@ice', '@jelly-o',
-                            '@liquorice', '@macaroon', '@marzipan', '@oat', '@pie', '@plum', '@pudding', '@sesame', '@snaps', '@soufflé',
-                            '@sugar', '@sweet', '@topping', '@wafer'
-                        ],
-                        minimumCharacters: 1
-                    }
+                },
+                // https://ckeditor.com/docs/ckeditor5/latest/features/mentions.html#configuration
+                mention: {
+                    feeds: [
+                        {
+                            marker: '@',
+                            feed: [
+                                '@apple', '@bears', '@brownie', '@cake', '@cake', '@candy', '@canes', '@chocolate', '@cookie', '@cotton', '@cream',
+                                '@cupcake', '@danish', '@donut', '@dragée', '@fruitcake', '@gingerbread', '@gummi', '@ice', '@jelly-o',
+                                '@liquorice', '@macaroon', '@marzipan', '@oat', '@pie', '@plum', '@pudding', '@sesame', '@snaps', '@soufflé',
+                                '@sugar', '@sweet', '@topping', '@wafer'
+                            ],
+                            minimumCharacters: 1
+                        }
+                    ]
+                },
+                // The "super-build" contains more premium features that require additional configuration, disable them below.
+                // Do not turn them on unless you read the documentation and know how to configure them and setup the editor.
+                removePlugins: [
+                    // These two are commercial, but you can try them out without registering to a trial.
+                    // 'ExportPdf',
+                    // 'ExportWord',
+                    'CKBox',
+                    'CKFinder',
+                    'EasyImage',
+                    // This sample uses the Base64UploadAdapter to handle image uploads as it requires no configuration.
+                    // https://ckeditor.com/docs/ckeditor5/latest/features/images/image-upload/base64-upload-adapter.html
+                    // Storing images as Base64 is usually a very bad idea.
+                    // Replace it on production website with other solutions:
+                    // https://ckeditor.com/docs/ckeditor5/latest/features/images/image-upload/image-upload.html
+                    // 'Base64UploadAdapter',
+                    'RealTimeCollaborativeComments',
+                    'RealTimeCollaborativeTrackChanges',
+                    'RealTimeCollaborativeRevisionHistory',
+                    'PresenceList',
+                    'Comments',
+                    'TrackChanges',
+                    'TrackChangesData',
+                    'RevisionHistory',
+                    'Pagination',
+                    'WProofreader',
+                    // Careful, with the Mathtype plugin CKEditor will not load when loading this sample
+                    // from a local file system (file://) - load this site via HTTP server if you enable MathType.
+                    'MathType',
+                    // The following features are part of the Productivity Pack and require additional license.
+                    'SlashCommand',
+                    'Template',
+                    'DocumentOutline',
+                    'FormatPainter',
+                    'TableOfContents'
                 ]
-            },
-            // The "super-build" contains more premium features that require additional configuration, disable them below.
-            // Do not turn them on unless you read the documentation and know how to configure them and setup the editor.
-            removePlugins: [
-                // These two are commercial, but you can try them out without registering to a trial.
-                // 'ExportPdf',
-                // 'ExportWord',
-                'CKBox',
-                'CKFinder',
-                'EasyImage',
-                // This sample uses the Base64UploadAdapter to handle image uploads as it requires no configuration.
-                // https://ckeditor.com/docs/ckeditor5/latest/features/images/image-upload/base64-upload-adapter.html
-                // Storing images as Base64 is usually a very bad idea.
-                // Replace it on production website with other solutions:
-                // https://ckeditor.com/docs/ckeditor5/latest/features/images/image-upload/image-upload.html
-                // 'Base64UploadAdapter',
-                'RealTimeCollaborativeComments',
-                'RealTimeCollaborativeTrackChanges',
-                'RealTimeCollaborativeRevisionHistory',
-                'PresenceList',
-                'Comments',
-                'TrackChanges',
-                'TrackChangesData',
-                'RevisionHistory',
-                'Pagination',
-                'WProofreader',
-                // Careful, with the Mathtype plugin CKEditor will not load when loading this sample
-                // from a local file system (file://) - load this site via HTTP server if you enable MathType.
-                'MathType',
-                // The following features are part of the Productivity Pack and require additional license.
-                'SlashCommand',
-                'Template',
-                'DocumentOutline',
-                'FormatPainter',
-                'TableOfContents'
-            ]
-        });
-    </script>
+            });
+        </script>
 </body>
 
 </html>

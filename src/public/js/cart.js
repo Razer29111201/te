@@ -40,6 +40,7 @@ if (!getCookie('acc')) {
                     success: function (data) {
                         console.log(data);
                         if (data.length == 1) {
+                            $('.cart_scroll').html('')
                             $('.cart_scroll').append(' <img src="https://png.pngtree.com/png-vector/20221104/ourlarge/pngtree-empty-paper-bag-isolated-on-white-background-png-image_6413917.png"alt=""><p>Chưa Có Sản Phẩm</p>')
                         }
                         if (data.length > 0) {
@@ -96,6 +97,8 @@ if (!getCookie('acc')) {
             success: function (data) {
                 console.log(data);
                 if (data.length == 0) {
+                    $('#cart_leagth').text(data.length)
+                    $('.cart_scroll').html('')
                     $('.cart_scroll').append(' <img src="https://png.pngtree.com/png-vector/20221104/ourlarge/pngtree-empty-paper-bag-isolated-on-white-background-png-image_6413917.png"alt=""><p>Chưa Có Sản Phẩm</p>')
                 }
                 if (data.length > 0) {
@@ -140,9 +143,10 @@ if (!getCookie('acc')) {
         })
     }
     const del = () => {
-        setTimeout(() => {
 
-            $(document).ready(function () {
+
+        $(document).ready(function () {
+            setInterval(() => {
                 $('.del_item').each(function (i, e) {
 
                     $(this).click(function () {
@@ -157,14 +161,13 @@ if (!getCookie('acc')) {
                         loadcart()
                     })
                 })
-            })
-        }, 1000)
+            }, 1000)
+        })
+
 
     }
-    setInterval(() => {
 
-        del()
-    }, 100)
+    del()
     loadcart()
 }
 else {
@@ -197,6 +200,8 @@ else {
                     type: "get",
                     success: (data) => {
                         if (data.length == 0) {
+                            $('#cart_leagth').text(data.length)
+                            $('.cart_scroll').html('')
                             $('.cart_scroll').append(' <img src="https://png.pngtree.com/png-vector/20221104/ourlarge/pngtree-empty-paper-bag-isolated-on-white-background-png-image_6413917.png"alt=""><p>Chưa Có Sản Phẩm</p>')
                         }
                         if (data.length > 0) {
@@ -209,7 +214,7 @@ else {
                                 $('.cart_scroll').append(
                                     `
         <div class="cart_product">
-            <input type="checkbox" name="val" value="${data[i].id}">
+            <input type="checkbox" class="val" name="val" value="${data[i].id}">
             <img src="${data[i].img}"
             alt="">
             <div class="cart-title">
@@ -217,7 +222,7 @@ else {
                 <div class="cart_price">
                     <input value='${data[i].id}' hidden>
                     <p>${data[i].offprice}</p>
-                   
+                    <input type="number" name="" class="cart_number" id="cart_number" value="1">
                     <p class='del_item'>x</p>
                 </div>
             </div>
@@ -230,7 +235,7 @@ else {
                             if (data.length > 0) {
                                 $('.cart_scroll').append(
                                     `<div class="cart_btn">
-                    <button>Thanh Toán </button>
+                                    <button id = "btn_payment">  <a href="/cart/payment">Thanh Toán</a> </button>
                      <button>Giỏ Hàng</button>
                     </div>`
                                 )
@@ -253,6 +258,7 @@ else {
                 console.log(data);
                 if (data.length == 0) {
                     $('#cart_leagth').text(data.length)
+                    $('.cart_scroll').html('')
                     $('.cart_scroll').html(' <img src="https://png.pngtree.com/png-vector/20221104/ourlarge/pngtree-empty-paper-bag-isolated-on-white-background-png-image_6413917.png"alt=""><p>Chưa Có Sản Phẩm</p>')
                 }
                 if (data.length > 0) {
@@ -265,7 +271,7 @@ else {
                         $('.cart_scroll').append(
                             `
         <div class="cart_product">
-            <input type="checkbox" name="val" value="${data[i].id}">
+            <input type="checkbox" name="val" class="val" value="${data[i].id}">
             <img src="${data[i].img}"
             alt="">
             <div class="cart-title">
@@ -273,7 +279,7 @@ else {
                 <div class="cart_price">
                     <input value='${data[i].id}' hidden>
                     <p>${data[i].offprice}</p>
-                   
+                    <input type="number" name="" class="cart_number" id="cart_number" value="1">
                     <p class='del_item'>x</p>
                 </div>
             </div>
@@ -286,8 +292,8 @@ else {
                     if (data.length > 0) {
                         $('.cart_scroll').append(
                             `<div class="cart_btn">
-            <button>Thanh Toán </button>
-             <button>Giỏ Hàng</button>
+                           <button id = "btn_payment">  <a href="/cart/payment">Thanh Toán</a> </button>
+                                       <button>Giỏ Hàng</button>
             </div>`
                         )
                     }
@@ -305,29 +311,31 @@ else {
 
         $(document).ready(function () {
             setInterval(() => {
+
                 $('.del_item').each(function (i, e) {
+
                     $(this).click(function () {
-                        setTimeout(() => {
-                            console.log(';');
-                            par = e.parentElement.querySelector('input').value
-                            $.ajax({
-                                url: "/cart/delete",
-                                type: "post",
-                                dataType: "text",
-                                data: {
-                                    id: par
-                                },
-                                success: (data) => {
-                                    console.log(data);
-                                    if (data) {
-                                        updateview()
 
-                                    }
-                                },
-                                error: (error) => { }
+                        console.log(';');
+                        par = e.parentElement.querySelector('input').value
+                        $.ajax({
+                            url: "/cart/delete",
+                            type: "post",
+                            dataType: "text",
+                            data: {
+                                id: par
+                            },
+                            success: (data) => {
+                                console.log(data);
+                                if (data) {
+                                    updateview()
+                                }
+                            },
+                            error: (error) => { }
 
-                            })
-                        }, 10)
+                        })
+
+
                     })
                 })
             }, 1000)
@@ -336,6 +344,36 @@ else {
 
     }
     del()
+
+    $(document).ready(function () {
+        setTimeout(() => {
+
+
+
+            $('#btn_payment').click(function () {
+                var value = []
+                var number = []
+                $('.val').each(function (i, e) {
+
+                    if ($(this).is(":checked")) {
+                        // it is checked
+                        value.push($(this).val())
+                        var num = $(this).parent().find($('.cart_number'))
+                        number.push(num.val())
+                    }
+                })
+                console.log(value);
+                setCookie('id', value, 1)
+                setCookie('num', number, 1)
+
+
+
+
+            })
+
+        }, 1000)
+
+    })
 
 
 }

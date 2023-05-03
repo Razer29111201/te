@@ -1,5 +1,6 @@
 import pool from "../configs/connerDB.js";
 import jwt from "jsonwebtoken";
+import { getproduct } from "./productController.js";
 
 const setProduct = async (req, res) => {
     var idUser = req.cookies.acc
@@ -18,7 +19,7 @@ const setProduct = async (req, res) => {
             try {
                 await pool.execute('INSERT INTO `cart`( `idproduct`, `iduser`, `quantity`) VALUES (?,?,?)', [req.body.idproduct, id, 1])
             } catch (error) {
-                console.log("lỗi vãi lồn");
+                console.log("lỗi");
             }
         }
     }
@@ -54,6 +55,32 @@ const deleteProduct = async (req, res) => {
     }
 
 }
+const setPayment = async (req, res) => {
+    var id = req.body.id
+
+
+
+    res.json({ id: id, number: req.body.number })
+
+}
+const getPayment = async (req, res) => {
+    var id = req.cookies.id.split(',')
+    var num = req.cookies.num.split(',')
+    var total = []
+    var product = []
+    var totall = 0
+    for (var i = 0; i < id.length; i++) {
+        var [Product, err] = await pool.execute('SELECT * FROM `product` WHERE `id` = ?', [id[i]])
+        total.push(Product[0].offprice * num[i])
+        totall = Product[0].offprice + totall
+        product.push(Product[0])
+    }
+    console.log(product);
+    var a = totall + 35500
+
+    res.render('cart/payment', { product: product, num: num, total: total, totall: totall, a: a })
+
+}
 export {
-    setProduct, getProduct, deleteProduct
+    setProduct, getProduct, deleteProduct, setPayment, getPayment
 }

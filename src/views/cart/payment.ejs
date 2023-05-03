@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/grid.css">
+    <link rel="stylesheet" href="/css/cart/payment.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div class="body">
+        <%- include('../partials/header'); %>
+            <div class="grid wide">
+                <h1>Thanh Toán</h1>
+                <div class="address">
+                    <div class="address_lable">
+                        <i class='bx bxs-location-plus'></i>
+                        Địa Chỉ Nhận Hàng
+                        <div class="address_details">
+                            <!-- <div class="address_name">
+                            Lê Đình Việt
+                        </div>
+                        <div class="address_number">
+                            (+84)833988758
+                        </div>
+                        <div class="address_">
+                            1 Trường Phúc- Trường minh, Xã Trường Minh, Huyện Nông Cống, Thanh Hóa
+
+                        </div> -->
+                            <div class="address_none">
+
+                                <p>Bạn Chưa Nhập Địa Chỉ</p>
+                                <a href="">Thay Đổi</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product">
+                    <div class="product_header">
+                        <h2>Sản Phẩm</h2>
+                        <div class="_product_price">
+                            Đơn giá
+                        </div>
+                        <div class="_product_solouong">
+                            Số lượng
+
+                        </div>
+                        <div class="_product_total">
+                            Thành tiền
+
+                        </div>
+
+                    </div>
+
+                    <% for (var i=0; i < product.length; i++ ) { %>
+                        <div class="product_details">
+                            <div class="product_img">
+
+                                <img src="/<%=product[i].img %>" alt="">
+                            </div>
+                            <div class="product_title">
+                                <p>
+                                    <%= product[i].productname %>
+                                </p>
+                            </div>
+                            <div class="product_price">
+                                <p>
+                                <p>
+                                    <%= product[i].offprice %>
+                                </p>
+                                </p>
+                            </div>
+                            <div class="product_soluong">
+                                <p>
+                                    <%= num[i] %>
+                                </p>
+                            </div>
+                            <div class="product_total">
+                                <p>
+                                    <%=total[i] %>
+                                </p>
+                            </div>
+                        </div>
+                        <% } %>
+
+
+
+
+                </div>
+                <div class="still_moving">
+                    <div class="send">
+                        <label for="">Lời Nhắn</label>
+                        <input type="text" placeholder="Lưu ý cho Người Bán">
+                    </div>
+                    <div class="moving">
+                        <label for="">Đơn vị vận chuyển: </label>
+                        <div class="select-move">
+                            <p>Nhanh</p>
+                            <small>Nhập hàng vào 4 Th5 - 10 Th05</small>
+                        </div>
+                        <p class="move_change">Thay Đổi</p>
+                        <p class="moving_total">31.500</p>
+                    </div>
+                </div>
+                <div class="product-total">
+                    <span>Tổng số tiền ( <%=product.length %> sản phẩm ): </span>
+                    <span>
+                        <%=totall %>
+                    </span>
+                </div>
+                <div class="payment">
+                    <div class="payment_header">
+                        <h2>Phương thức thanh toán</h2>
+                        <div class="payment_select">
+                            <span>Thanh Toán Khi Nhận Hàng</span>
+                            <span>THAY ĐỔI</span>
+                        </div>
+                    </div>
+                    <div class="payment_body">
+                        <div class="payment_list">
+                            <div class="payment_item">
+                                <p>Tổng tiền hàng: </p>
+                                <p>
+                                    <%=totall %>
+                                </p>
+
+                            </div>
+                            <div class="payment_item">
+                                <p>Phí vận chuyển
+                                </p>
+                                <p>31.500</p>
+
+                            </div>
+                            <div class="payment_item">
+                                <p>Tổng thanh toán:
+                                </p>
+                                <p class="Total">
+                                    <%=a %>
+                                </p>
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="payment_btn">
+                        <p>Nhấn "Đặt hàng" đồng nghĩa với việc bạn đồng ý tuân theo Điều khoản Shopee và Điều khoản
+                            và
+                            Điều
+                            kiện của hợp đồng Bảo hiểm</p>
+                        <button> Đặt Hàng</button>
+                    </div>
+                </div>
+
+            </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+
+
+    </script>
+</body>
+
+
+</html>

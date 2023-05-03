@@ -788,3 +788,8 @@ body {
 .hiden {
     display: none;
 }
+
+.cart_number {
+    width: 30px;
+    font-size: 16px;
+}

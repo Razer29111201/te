@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="/css/grid.css">
+    <link rel="stylesheet" href="/css/admin/admin_product.css">
+    <title>Thêm sản phẩm</title>
+</head>
+
+<body>
+    <div class="body hidden">
+
+        <div class="container">
+            <h1 class="title">Thêm Tài Khoản</h1>
+            <span id="exit"><i class='bx bx-x'></i></span>
+            <form action="/seller/adduser" method="post">
+
+                <div class="input-list">
+
+
+                    <input type="text" name="name" placeholder="Nhập Tên" id="ten">
+                    <div></div>
+                    <small></small>
+
+                </div>
+                <div class="input-list">
+
+
+                    <input type="text" name="user" placeholder="Nhập Tài Khoản" id="ten">
+                    <div></div>
+                    <small></small>
+
+                </div>
+                <div class="input-list">
+
+                    <input type="text" name="address" placeholder="Nhập Địa Chỉ" id="bir">
+                    <div></div>
+                    <small></small>
+                </div>
+                <div class="input-list">
+
+                    <input type="text" name="sdt" placeholder="Nhập Số Điện Thoại" id="bir">
+                    <div></div>
+                    <small></small>
+                </div>
+                <div class="input-list">
+
+                    <input type="email" name="email" placeholder="Nhập Email" id="email">
+                    <div></div>
+                    <small></small>
+                </div>
+                <div class="input-list">
+
+                    <input type="text" name="pass" placeholder="Nhập Mật Khẩu" id="pass">
+                    <div></div>
+                    <small></small>
+                </div>
+
+                <div class="input-list">
+
+                    <input type="text" name="role" placeholder="Nhập Quyền ( Nhập 0 = admin, Nhập 1 = user) "
+                        id="fpass">
+                    <div></div> <small></small>
+                </div>
+
+                <div class="btn">
+                    <button type="submit">Đăng Ký</button>
+                </div>
+
+
+
+
+
+            </form>
+        </div>
+    </div>
+    <div class="wapper">
+        <div class="row">
+            <div class=" m--2">
+                <div class="admin__left">
+                    <div class="menu">
+                        <div class="menu_logo">
+                            <img src="/assets/logo.png" alt="">
+                        </div>
+                        <ul class="menu_list">
+                            <li class="menu_item active">
+                                <i class='bx bx-home'></i>
+                                Trang Chủ Admin
+                            </li>
+                            <li class="menu_item">
+                                <i class='bx bx-user'></i>
+                                Quản Lý Tài Khoản
+                            </li>
+                            <li class="menu_item">
+                                <i class='bx bx-list-ul'></i>
+                                Quản Lý Sản Phẩm
+                            </li>
+                            <li class="menu_item">
+                                <i class='bx bx-slideshow'></i>
+                                Quản Lý Slide
+                            </li>
+                            <li class="menu_item">
+                                <i class='bx bx-news'></i>
+                                Quản Lý Tin Tức
+                            </li>
+
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class=" m--10">
+                <div class="header">
+                    <i class='bx bx-user'></i>
+                    <span>name</span>
+                </div>
+                <div class="body_content">
+                    <h1>Quản Lý Tài Khoản</h1>
+                    <div class="btn">
+                        <button id="adduser">Add</button>
+                        <button id="edit">Edit</button>
+                        <button id="btn">Delete</button>
+                        <div id="editt"></div>
+                    </div>
+
+
+                    <table>
+                        <tr>
+                            <th></th>
+                            <th>Tên Người Dùng</th>
+                            <th>Tên Tài Khoản</th>
+                            <th>Mật Khẩu</th>
+                            <th>Địa Chỉ</th>
+                            <th>SĐT</th>
+                            <th>Email</th>
+                            <th>Quyền</th>
+                        </tr>
+                        <% for (var i=0; i < acc.length; i++ ) { %>
+                            <tr>
+                                <td><input class="checkbox" value=" <%= acc[i].id %>" type="checkbox">
+
+                                </td>
+                                <td>
+                                    <%= acc[i].Name %>
+                                </td>
+                                <td>
+                                    <%= acc[i].user %>
+                                </td>
+                                <td>******</td>
+                                <td>
+                                    <%= acc[i].address %>
+                                </td>
+                                <td>
+                                    <%= acc[i].NPhone %>
+                                </td>
+                                <td>
+                                    <%= acc[i].Email %>
+                                </td>
+                                <td>
+                                    <% if (acc[i].role==0) { %>
+                                        <p> admin</p>
+                                        <%} else { %>
+                                            <p> user </p>
+                                            <% } %>
+                                </td>
+
+                            </tr>
+                            <% } %>
+                    </table>
+                </div>
+
+                <div class="body_content hidden ">
+                    <h1>
+                        Quản Lý Sản Phẩm
+                    </h1>
+
+                    <div class="btn">
+                        <a href="/seller/getproduct"> <button id="add_product">Add</button></a>
+                        <button id="edit_product">Edit</button>
+                        <button id="delete_product">Delete</button>
+                        <div id="comfimProduct"></div>
+                    </div>
+
+                    <table>
+                        <tr>
+                            <th></th>
+                            <th>IMG</th>
+                            <th>Tên Sản Phẩm</th>
+                            <th>Giá</th>
+                            <th>Discount</th>
+                            <th>Bao Gồm</th>
+                            <th>Kho</th>
+                            <th>Khích Thước</th>
+
+                        </tr>
+
+                        <% for (var i=0; i < product.length; i++ ) { %>
+                            <tr>
+                                <td><input type="checkbox"></td>
+                                <td><img src="/<%= product[i].img %>" alt=""></td>
+                                <td>
+                                    <%= product[i].productname %>
+                                </td>
+                                <td>
+                                    <%= product[i].offprice %>
+                                </td>
+                                <td>
+                                    <%= product[i].discount %> %
+                                </td>
+                                <td>
+                                    <%= product[i].Price_includes %>
+                                </td>
+                                <td>
+                                    <%= product[i].Warehouse %>
+                                </td>
+                                <td>
+                                    <%= product[i].size %>
+                                </td>
+
+                            </tr>
+                            <% } %>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+</body>
+<script src="admin_product.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('.menu_item').each(function (i, e) {
+            $(this).click(function () {
+                window.location.href = `?query=${i}`
+
+            })
+
+        })
+        setTimeout(function () {
+            $('.menu_item').removeClass('active')
+            if (window.location.search == '?query=1') {
+                $('.body_content').addClass('hidden')
+                $('.menu_item')[1].classList.add('active')
+                $('.body_content')[0].classList.remove('hidden')
+            }
+            if (window.location.search == '?query=2') {
+                $('.menu_item')[2].classList.add('active')
+                $('.body_content').addClass('hidden')
+                $('.body_content')[1].classList.remove('hidden')
+            }
+        }, 100)
+    })
+    $('#btn').click(function () {
+        var id = []
+        $('.checkbox').each(function () {
+            if ($(this).is(":checked")) {
+                // it is checked
+                id.push($(this).val())
+            }
+        })
+        $.ajax({
+            url: "/seller/deleteuser",
+            type: "post",
+            dataType: "text",
+            data: {
+                id: id
+            },
+            success: (data) => {
+                console.log(data);
+                if (data) {
+                    console.log(data);
+                    location.href = '?query=1'
+                }
+            },
+            error: (error) => { }
+
+        })
+    })
+    $('#edit').click(function () {
+        var id = []
+        $('.checkbox').each(function () {
+            if ($(this).is(":checked")) {
+                // it is checked
+                var a = $(this).parent().parent().find('td').attr('contenteditable', '')
+                $('#editt').html('')
+                $('#editt').append(`<button id = "confimEdit">Xác Nhận<button>`)
+            }
+        })
+
+        $('#confimEdit').click(function () {
+            $('.checkbox').each(function () {
+                if ($(this).is(":checked")) {
+                    // it is checked
+                    var a = $(this).parent().parent()
+
+                    console.log($(this).val());
+
+                    $.ajax({
+                        url: "/seller/edituser",
+                        type: "post",
+                        dataType: "text",
+                        data: {
+                            id: $(this).val(),
+                            name: a.find('td:nth-child(2)').text(),
+                            user: a.find('td:nth-child(3)').text(),
+                            address: a.find('td:nth-child(5)').text(),
+                            sdt: a.find('td:nth-child(6)').text(),
+                            Email: a.find('td:nth-child(7)').text(),
+                            role: a.find('td:nth-child(8)').text(),
+                        },
+                        success: (data) => {
+                            if (data) {
+                                location.href = '?query=1'
+                            }
+
+                        },
+                        error: (error) => { }
+
+                    })
+                }
+            })
+        })
+
+
+
+    })
+    $('#adduser').click(function () {
+        $('.body').removeClass('hidden')
+    })
+    $('#exit').click(function () {
+        $('.body').addClass('hidden')
+    })
+
+    $.ajax({
+        url: "/seller/adduser",
+        type: "post",
+
+        success: (data) => {
+            if (data) {
+                location.reload()
+            }
+
+        },
+        error: (error) => { }
+
+    })
+
+</script>
+
+</html>
