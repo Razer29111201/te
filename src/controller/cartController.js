@@ -71,16 +71,60 @@ const getPayment = async (req, res) => {
     var totall = 0
     for (var i = 0; i < id.length; i++) {
         var [Product, err] = await pool.execute('SELECT * FROM `product` WHERE `id` = ?', [id[i]])
+
         total.push(Product[0].offprice * num[i])
         totall = Product[0].offprice + totall
         product.push(Product[0])
     }
-    console.log(product);
+
     var a = totall + 35500
 
     res.render('cart/payment', { product: product, num: num, total: total, totall: totall, a: a })
 
+
+}
+const getPaymentApi = async (req, res) => {
+    var id = req.cookies.id.split(',')
+    var num = req.cookies.num.split(',')
+    var total = []
+    var product = []
+    var totall = 0
+    for (var i = 0; i < id.length; i++) {
+        var [Product, err] = await pool.execute('SELECT * FROM `product` WHERE `id` = ?', [id[i]])
+        total.push(Product[0].offprice * num[i])
+        totall = Product[0].offprice + totall
+        product.push(Product[0])
+    }
+    // console.log(product);
+    var a = totall + 35500
+    try {
+
+        var token = req.cookies.acc
+        var id = jwt.verify(token, 'shhhhh', function (err, decoded) {
+            return decoded
+        });
+        var [data, err] = await pool.execute('SELECT * FROM `user` WHERE `id` = ?', [id])
+
+
+        res.json({ product: product, num: num, total: total, totall: totall, a: a, data: data[0] })
+    } catch (error) {
+
+    }
+
+
+}
+
+const comfimpayment = async (req, res) => {
+
+    console.log(req.body);
+    try {
+        await pool.execute("INSERT INTO `orderproduct`( `idproduct`, `iduser`, `soluong`, `address`, `total`) VALUES (?,?,?,?,?)", [parseInt(req.body.idproduct), parseInt(req.body.iduser), parseInt(req.body.num), req.body.address, parseInt(req.body.total)])
+        console.log('a');
+    } catch (error) {
+        console.log(error);
+    }
+
 }
 export {
-    setProduct, getProduct, deleteProduct, setPayment, getPayment
+    setProduct, getProduct, deleteProduct, setPayment, getPayment, getPaymentApi, comfimpayment
 }

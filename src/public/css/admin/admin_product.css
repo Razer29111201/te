@@ -108,7 +108,7 @@ td img {
     width: 100px;
 }
 
-.btn {
+.btnn {
     margin: 50px 10px 20px;
     justify-content: right;
     display: flex;
@@ -124,7 +124,7 @@ td img {
     display: none;
 }
 
-.btn button {
+.btnn button {
     cursor: pointer;
     margin-right: 10px;
     outline: none;
@@ -361,7 +361,7 @@ td img {
 }
 
 
-.btn button:hover {
+.btnn button:hover {
     background-color: #49b152;
 }
 

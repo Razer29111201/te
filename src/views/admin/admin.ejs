@@ -121,7 +121,7 @@
                 </div>
                 <div class="body_content">
                     <h1>Quản Lý Tài Khoản</h1>
-                    <div class="btn">
+                    <div class="btnn">
                         <button id="adduser">Add</button>
                         <button id="edit">Edit</button>
                         <button id="btn">Delete</button>
@@ -179,7 +179,7 @@
                         Quản Lý Sản Phẩm
                     </h1>
 
-                    <div class="btn">
+                    <div class="btnn">
                         <a href="/seller/getproduct"> <button id="add_product">Add</button></a>
                         <button id="edit_product">Edit</button>
                         <button id="delete_product">Delete</button>
@@ -201,7 +201,7 @@
 
                         <% for (var i=0; i < product.length; i++ ) { %>
                             <tr>
-                                <td><input type="checkbox"></td>
+                                <td><input class="checkbox_product" value=" <%= product[i].id %>" type="checkbox"></td>
                                 <td><img src="/<%= product[i].img %>" alt=""></td>
                                 <td>
                                     <%= product[i].productname %>
@@ -351,7 +351,41 @@
         error: (error) => { }
 
     })
+    $('#edit_product').click(function () {
+        $('.checkbox_product').each(function () {
+            if ($(this).is(":checked")) {
+                console.log($(this).val());
+                location.href = `/seller/editproduct/${$(this).val()}`
+            }
+        })
+    })
+    $('#delete_product').click(function () {
+        var id = []
+        $('.checkbox_product').each(function () {
+            if ($(this).is(":checked")) {
+                id.push($(this).val())
+            }
+        })
+        console.log(id);
+        $.ajax({
+            url: "/seller/deleteproduct",
+            type: "post",
+            data: {
+                id: id
+            },
+            success: (data) => {
+                if (data) {
+                    location.reload()
+                }
 
+            },
+            error: (error) => { }
+
+        })
+    })
 </script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="/js/user.js"></script>
+<script src="/js/cart.js"></script>
 
 </html>

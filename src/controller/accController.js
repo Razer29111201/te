@@ -22,7 +22,7 @@ const jwtAcc = async (req, res, next) => {
     var expires = "expires=" + d.toUTCString();
 
     res.cookie('acc', token, expires);
-    res.send('success')
+    res.redirect('/')
     // jwt.verify(token, 'shhhhh', function (err, decoded) {
     //     console.log(decoded) // bar
     // });
@@ -32,17 +32,36 @@ const jwtAcc = async (req, res, next) => {
 const checkLogin = async (req, res, next) => {
     console.log(req.cookies.acc);
 }
+const dataacc = async (req, res, next) => {
+    try {
+
+        var token = req.cookies.acc
+        var id = jwt.verify(token, 'shhhhh', function (err, decoded) {
+            return decoded
+        });
+        var [data, err] = await pool.execute('SELECT * FROM `user` WHERE `id` = ?', [id])
+
+        res.json(data[0])
+    } catch (error) {
+
+    }
+
+}
 const checkrole = async (req, res, next) => {
+
     var token = req.cookies.acc
-    var id = jwt.verify(token, 'shhhhh', function (err, decoded) {
-        return decoded
-    });
-    var [data, err] = await pool.execute('SELECT * FROM `user` WHERE `id` = ?', [id])
-    if (data[0].role == 0) {
-        next()
+    if (token) {
+
+        var id = jwt.verify(token, 'shhhhh', function (err, decoded) {
+            return decoded
+        });
+        var [data, err] = await pool.execute('SELECT * FROM `user` WHERE `id` = ?', [id])
+        if (data[0].role == 0) {
+            next()
+        }
     }
     else {
-        res.json('vl')
+        res.json('Bạn Không Đủ Quyền')
     }
 }
 const getallAcc = async (req, res, next) => {
@@ -61,5 +80,5 @@ const setRegister = async (req, res, next) => {
 
 }
 export {
-    getLogin, getRegister, jwtAcc, checkLogin, checkrole, getallAcc, setRegister
+    getLogin, getRegister, jwtAcc, checkLogin, checkrole, getallAcc, setRegister, dataacc
 }

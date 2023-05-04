@@ -12,7 +12,7 @@ const setproduct = async (req, res) => {
     var file = req.file.path.split('\\').splice(2).join('/')
     var offprice = (req.body.price / 100) * (100 - req.body.Discout)
     await pool.execute("INSERT INTO `product`( `productname`, `price`, `discount`,`offprice`,  `category`, `Price_includes`, `size`,`Warehouse`,  `summary`, `img`)  VALUES(?,?,?,?,?,?,?,?,?,?)", [req.body.name, req.body.price, req.body.Discout, offprice, req.body.category, req.body.Price_includes, req.body.summary, req.body.warehouse, req.body.editor, file])
-    res.redirect('/seller')
+    res.redirect('/seller?query=2')
 
 }
 
@@ -78,6 +78,46 @@ const adduser = async (req, res) => {
     }
 
 }
+const geteditproduct = async (req, res) => {
+    var id = req.params.id
+    try {
+        var [product, err] = await pool.execute("SELECT * FROM `product` WHERE `id` =? ", [id])
+        console.log(product[0]);
+        res.render('seller/editseller', { product: product[0] })
+    } catch (error) {
+
+    }
+}
+const editproduct = async (req, res) => {
+    var file = req.file.path.split('\\').splice(2).join('/')
+
+    var offprice = (req.body.price / 100) * (100 - req.body.Discout)
+    try {
+        await pool.execute("UPDATE `product` SET `productname`= ? ,`price`= ? ,`discount`= ? ,`offprice`= ? ,`category`= ? ,`Price_includes`= ? ,`size`= ? ,`Warehouse`= ? ,`summary`= ? ,`img`= ?  WHERE `id` = ?", [req.body.name, req.body.price, req.body.Discout, offprice, req.body.category, req.body.Price_includes, req.body.summary, req.body.warehouse, req.body.editor, file, req.body.id])
+        res.redirect('/seller?query=2')
+    } catch (error) {
+        console.log(error);
+    }
+
+}
+
+const deleteproduct = async (req, res) => {
+    var id = req.body.id
+
+    try {
+        for (var i = 0; i < id.length; i++) {
+            var data = parseInt(id[i])
+
+            await pool.execute('DELETE FROM `product` WHERE `id` = ?', [data])
+
+        }
+        res.json('oke')
+        console.log('b');
+    }
+    catch {
+        console.log('a');
+    }
+}
 export {
-    getSeler, setproduct, getNew, setNews, deleteuser, edituser, adduser, getproduct
+    getSeler, setproduct, getNew, setNews, deleteuser, edituser, adduser, getproduct, editproduct, geteditproduct, deleteproduct
 }

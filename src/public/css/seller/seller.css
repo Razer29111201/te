@@ -118,3 +118,20 @@ textarea {
 .same-as-selected {
     background-color: rgba(0, 0, 0, 0.1);
 }
+
+.btn {
+    width: 100%;
+    text-align: right;
+    margin-right: 30px;
+    margin-top: 30px;
+}
+
+.btn button {
+    width: 120px;
+    height: 40px;
+    border: none;
+    outline: none;
+    background-color: #49b14d;
+    color: #fff;
+    border-radius: 5px;
+}

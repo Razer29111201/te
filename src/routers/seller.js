@@ -1,6 +1,7 @@
 import express from 'express';
 import multer from 'multer';
-import { getSeler, setproduct, getNew, setNews, deleteuser, edituser, adduser, getproduct } from '../controller/sellerController.js';
+
+import { getSeler, setproduct, getNew, setNews, deleteuser, edituser, adduser, getproduct, editproduct, geteditproduct, deleteproduct } from '../controller/sellerController.js';
 import { upload } from '../controller/multer.js';
 
 const router = express.Router();
@@ -14,6 +15,10 @@ router.post('/setNews', upload.single('imgNews'), setNews)
 router.post('/deleteuser', deleteuser)
 router.post('/edituser', edituser)
 router.post('/adduser', adduser)
+router.post('/editproduct', upload.single('img'), editproduct)
+router.get('/editproduct/:id', geteditproduct)
+router.post('/deleteproduct', deleteproduct)
+
 
 
 module.exports = router

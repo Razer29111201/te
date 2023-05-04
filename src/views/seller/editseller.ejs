@@ -19,20 +19,21 @@
         <div class="grid wide">
             <h1>Thêm Sản Phẩm</h1>
 
-            <form action="/seller/setproduct" method="post" enctype="multipart/form-data">
+            <form action="/seller/editproduct" method="post" enctype="multipart/form-data">
+                <input type="text" name="id" hidden value="<%= product.id %>">
                 <div class="form_group">
                     <label for="">Tên Sản Phẩm: </label>
-                    <input type="text" name="name" placeholder="Tên Sản Phẩm">
+                    <input type="text" name="name" value=" <%= product.productname %>" placeholder="Tên Sản Phẩm">
                 </div>
 
                 <div class="form_group">
                     <label for="">Giá Tiền Sản Phẩm : </label>
-                    <input type="text" name="price" placeholder="Giá Tiền Sản Phẩm">
+                    <input type="text" value=" <%= product.price %>" name="price" placeholder="Giá Tiền Sản Phẩm">
                 </div>
 
                 <div class="form_group">
                     <label for="">Giảm Giá: </label>
-                    <input type="text" name="Discout" placeholder="Giảm Giá">
+                    <input type="text" name="Discout" value=" <%= product.discount %>" placeholder="Giảm Giá">
                 </div>
 
                 <div class="form_group">
@@ -54,16 +55,17 @@
 
                 <div class="form_group">
                     <label for="">Giá Trên Bao Gồm: </label>
-                    <input type="text" name="Price_includes" placeholder="Giá Trên Bao Gồm">
+                    <input type="text" name="Price_includes" value=" <%= product.Price_includes %>"
+                        placeholder="Giá Trên Bao Gồm">
                 </div>
                 <div class="form_group">
                     <label for="">Hàng Trong Kho: </label>
-                    <input type="text" name="warehouse" placeholder="Hàng Trong Kho">
+                    <input type="text" name="warehouse" value=" <%= product.Warehouse %>" placeholder="Hàng Trong Kho">
                 </div>
 
                 <div class="form_group">
                     <label for="">Kích Thước: </label>
-                    <input type="text" name="summary" placeholder="Kích Thước">
+                    <input type="text" name="summary" value=" <%= product.size %>" placeholder="Kích Thước">
                 </div>
                 <div class="form_group">
                     <label for="">Hình Ảnh: </label>
@@ -77,18 +79,12 @@
                 <div class="form-group">
                     <label for="">Mô Tả Sản Phẩm: </label>
 
+                    <textarea name="editor" id="editor" cols="30" rows="10" maxlength="1000000"
+                        value="<%- product.summary %>"></textarea>
 
-                    <textarea name="editor" id="editor" cols="30" rows="10" maxlength="1000000"></textarea>
+
 
                 </div>
-
-
-
-
-
-
-
-
                 <div class="btn">
                     <button type="submit">Tạo</button>
                 </div>
@@ -335,7 +331,7 @@
         </script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="/js/user.js"></script>
-        <script src="/js/cart.js">
-</body >
+        <script src="/js/cart.js"></script>
+</body>
 
-</html >
+</html>

@@ -5,6 +5,7 @@ import news from "./news.js"
 import product from "./product.js"
 import about from "./about.js"
 import cart from "./cart.js"
+import { checkrole } from '../controller/accController.js';
 import acc from "./acc.js"
 import { getHomePage, getContact } from "../controller/mainController.js";
 
@@ -18,7 +19,7 @@ const initRouter = (app) => {
     app.use('/account', acc)
     app.use('/about', about)
     app.use('/product', product)
-    app.use('/seller', seller)
+    app.use('/seller', checkrole, seller)
     return app.use('/', router)
 }
 export default initRouter

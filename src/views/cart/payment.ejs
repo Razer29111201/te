@@ -154,7 +154,7 @@
                             và
                             Điều
                             kiện của hợp đồng Bảo hiểm</p>
-                        <button> Đặt Hàng</button>
+                        <button id="btn_payment"> Đặt Hàng</button>
                     </div>
                 </div>
 
@@ -162,6 +162,47 @@
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script>
+
+
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="/js/user.js"></script>
+    <script src="/js/cart.js"></script>
+    <script>
+        $.ajax({
+            url: '/cart/getpayment',
+            type: 'get',
+            success: function (data) {
+                console.log(data);
+                if (data) {
+                    $('#btn_payment').click(function () {
+                        for (var i = 0; i < data.product.length; i++) {
+
+                            console.log('a');
+                            $.ajax({
+                                url: "/cart/comfimpayment",
+                                type: "post",
+                                dataType: "text",
+                                data: {
+                                    iduser: data.data.id,
+                                    idproduct: data.product[i].id,
+                                    total: data.a,
+                                    address: data.data.address,
+                                    num: data.num[i]
+                                },
+                                success: (data) => {
+                                    console.log(data);
+                                    if (data) {
+                                        alert('Bạn Đã Thêm Sản Phẩm Từ Trước Đố')
+                                    }
+                                },
+                                error: (error) => { }
+                            })
+                        }
+                    })
+                }
+            }
+        })
 
 
     </script>
