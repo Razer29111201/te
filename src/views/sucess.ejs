@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="tviewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/grid.css">
+    <link rel="stylesheet" href="/css/cart/payment.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>Document</title>
+    <style>
+        body {
+            background-color: #f5f5f5;
+            width: 100%;
+            height: 100vh;
+
+
+        }
+
+        .sucess {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 50vh;
+        }
+
+        .content {
+            text-align: center;
+            width: 600px;
+            font-size: 20px;
+            color: #49b14d;
+        }
+
+        .content i {
+            font-size: 80px;
+            margin: 20px 0;
+        }
+
+        .content p {
+            line-height: 2;
+        }
+
+        .btn_dre {
+            margin-top: 40px;
+        }
+
+        .btn_dre button {
+            border: none;
+            background-color: #49b14d;
+            color: #fff;
+            height: 40px;
+            width: 100px;
+            border-radius: 4px;
+            margin: 0 5px;
+        }
+
+        .btn_dre button:hover {
+            background-color: #09bf0f;
+        }
+
+        .btn_dre a:last-child button {
+            background-color: #57c5ce;
+        }
+
+        .btn_dre a:last-child button:hover {
+            background-color: #12bccb;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bodyy hidden">
+
+        <div class="container">
+            <h1 class="title">Thêm Địa Chỉ</h1>
+            <span id="exit"><i class='bx bx-x'></i></span>
+            <form action="/cart/setaddress" method="post">
+
+                <div class="input-list">
+
+
+                    <input type="text" name="t1" placeholder=" Địa Chỉ" id="t1">
+                    <div></div>
+                    <small></small>
+
+                </div>
+                <div class="input-list">
+
+
+                    <input type="text" name="t2" placeholder="Phường/Xã" id="t2">
+                    <div></div>
+                    <small></small>
+
+                </div>
+                <div class="input-list">
+
+                    <input type="text" name="t3" placeholder="Quận/Huyện" id="t3">
+                    <div></div>
+                    <small></small>
+                </div>
+                <div class="input-list">
+
+                    <input type="text" name="t4" placeholder="Tỉnh/Thành Phố" id="t4">
+                    <div></div>
+                    <small></small>
+                </div>
+
+                <div class="btn">
+                    <button id="change" type="submit"> Thêm</button>
+                </div>
+
+
+
+
+
+            </form>
+        </div>
+    </div>
+    <div class="body">
+        <%- include('./partials/header'); %>
+            <div class="grid wide">
+                <div class="sucess">
+                    <div class="content">
+                        <h2>Thanh Toán Thành Công</h2>
+                        <i class='bx bxs-check-circle'></i>
+                        <p>Đơn hàng của quý khách đã thanh toán thành công </p>
+                        <p>Cảm Ơn Quý Khách đã mua hàng</p>
+                        <div class="btn_dre">
+                            <a href="/"><button>Trang Chủ</button></a>
+                            <a href="/cart/order"><button>Đơn Mua</button></a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+    </div>
+    <%- include('./partials/footer'); %>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script>
+
+
+        </script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="/js/user.js"></script>
+        <script src="/js/cart.js"></script>
+        <script>
+            $.ajax({
+                url: '/cart/getpayment',
+                type: 'get',
+                success: function (data) {
+                    console.log(data);
+                    if (data) {
+                        $('#btn_payment').click(function () {
+                            var idorder = Math.floor(Math.random() * 100000)
+                            for (var i = 0; i < data.product.length; i++) {
+
+                                console.log('a');
+                                $.ajax({
+                                    url: "/cart/comfimpayment",
+                                    type: "post",
+                                    dataType: "text",
+                                    data: {
+                                        productname: data.product[i].productname,
+                                        img: data.product[i].img,
+                                        iduser: data.data.id,
+                                        idproduct: data.product[i].id,
+                                        total: data.a,
+                                        address: data.data.address,
+                                        num: data.num[i],
+                                        idorder: idorder
+                                    },
+                                    success: (data) => {
+                                        console.log(data);
+                                        if (data) {
+                                            alert('Bạn Đã Thêm Sản Phẩm Từ Trước Đố')
+                                        }
+                                    },
+                                    error: (error) => { }
+                                })
+                            }
+                        })
+                    }
+                }
+            })
+            $('#btn_change').click(function () {
+                $('.bodyy').removeClass('hidden')
+            })
+            $('#exit>').click(function () {
+                $('.bodyy').addClass('hidden')
+            })
+
+
+
+        </script>
+</body>
+
+
+</html>

@@ -101,11 +101,11 @@
                             </li>
                             <li class="menu_item">
                                 <i class='bx bx-slideshow'></i>
-                                Quản Lý Slide
+                                Quản Lý Tin Tức
                             </li>
                             <li class="menu_item">
                                 <i class='bx bx-news'></i>
-                                Quản Lý Tin Tức
+                                Quản Lý Đơn Hàng
                             </li>
 
 
@@ -226,6 +226,44 @@
                             <% } %>
                     </table>
                 </div>
+                <div class="body_content hidden ">
+                    <h1>
+                        Quản Lý Tin Tức
+                    </h1>
+
+                    <div class="btnn">
+                        <a href="/seller/news"> <button id="add_slide">Add</button></a>
+                        <button id="edit_slide">Edit</button>
+                        <button id="delete_slide">Delete</button>
+                        <div id="comfimslide"></div>
+                    </div>
+
+                    <table>
+                        <tr>
+                            <th></th>
+                            <th>Img</th>
+                            <th>Tiêu Đề</th>
+                            <th>Ngày Đăng Bài</th>
+
+
+                        </tr>
+
+                        <% for (var i=0; i < news.length; i++ ) { %>
+                            <tr>
+                                <td><input class="checkbox_news" value=" <%= news[i].id %>" type="checkbox"></td>
+                                <td><img src="/<%= news[i].img %>" alt=""></td>
+                                <td>
+                                    <%= news[i].Title %>
+                                </td>
+                                <td>
+                                    <%= news[i].date %>
+                                </td>
+
+
+                            </tr>
+                            <% } %>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
@@ -254,6 +292,11 @@
                 $('.menu_item')[2].classList.add('active')
                 $('.body_content').addClass('hidden')
                 $('.body_content')[1].classList.remove('hidden')
+            }
+            if (window.location.search == '?query=3') {
+                $('.menu_item')[3].classList.add('active')
+                $('.body_content').addClass('hidden')
+                $('.body_content')[2].classList.remove('hidden')
             }
         }, 100)
     })
@@ -369,6 +412,38 @@
         console.log(id);
         $.ajax({
             url: "/seller/deleteproduct",
+            type: "post",
+            data: {
+                id: id
+            },
+            success: (data) => {
+                if (data) {
+                    location.reload()
+                }
+
+            },
+            error: (error) => { }
+
+        })
+    })
+    $('#edit_slide').click(function () {
+        $('.checkbox_news').each(function () {
+            if ($(this).is(":checked")) {
+                console.log($(this).val());
+                location.href = `/seller/editnews/${$(this).val()}`
+            }
+        })
+    })
+    $('#delete_slide').click(function () {
+        var id = []
+        $('.checkbox_news').each(function () {
+            if ($(this).is(":checked")) {
+                id.push($(this).val())
+            }
+        })
+        console.log(id);
+        $.ajax({
+            url: "/seller/deletenews",
             type: "post",
             data: {
                 id: id

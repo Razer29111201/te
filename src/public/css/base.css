@@ -825,6 +825,17 @@ body {
     right: 0;
 }
 
+.login__drop::after {
+    content: "";
+    position: absolute;
+
+    width: 100px;
+    height: 30px;
+    top: -10px;
+    right: 0;
+
+}
+
 .login__drop li {
     line-height: 2;
     padding: 10px 20px;
@@ -843,4 +854,63 @@ body {
 
 .hidden {
     display: none;
+}
+
+.header__search-history {
+    position: absolute;
+    left: 0;
+    width: calc(700px);
+    background-color: #fff;
+    top: calc(100% + 2px);
+    border-radius: 3px;
+    box-shadow: 0 1px 5px rgb(209, 207, 207);
+    display: none;
+    padding: 20px 5px;
+    z-index: 1000;
+}
+
+.header__search-history-heading {
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: rgb(189, 189, 189);
+    margin: 12px 12px;
+}
+
+.header__search-history-list {
+    padding: 0;
+    list-style: none;
+    margin-bottom: 0;
+
+}
+
+.header__search-history-item {
+    height: 38px;
+    line-height: 38px;
+    font-size: 1.4rem;
+    color: var(--text-color);
+    padding: 0 12px;
+
+}
+
+.header__search-history-item:hover {
+    background-color: #49b14d;
+}
+
+.header__search-history-item a:hover {
+    color: #fff;
+
+}
+
+.header__search-history-item a {
+    font-size: 1.4rem;
+    color: #333;
+    text-decoration: none;
+    display: block;
+    width: 100%;
+}
+
+.header__search--none {
+    font-size: 16px;
+    text-align: center;
+    line-height: 4;
 }

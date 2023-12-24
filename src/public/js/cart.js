@@ -118,8 +118,7 @@ if (!getCookie('acc')) {
                 <p>${data[i].productname}</p>
                 <div class="cart_price">
                     <input value='${data[i].id}' hidden>
-                    <p>${data[i].offprice}</p>
-                   
+                    <p>${data[i].offprice}</p
                     <p class='del_item'>x</p>
                 </div>
             </div>
@@ -215,7 +214,7 @@ else {
                                     `
         <div class="cart_product">
             <input type="checkbox" class="val" name="val" value="${data[i].id}">
-            <img src="${data[i].img}"
+            <img src="/${data[i].img}"
             alt="">
             <div class="cart-title">
                 <p>${data[i].productname}</p>
@@ -235,7 +234,7 @@ else {
                             if (data.length > 0) {
                                 $('.cart_scroll').append(
                                     `<div class="cart_btn">
-                                    <button id = "btn_payment">  <a href="/cart/payment">Thanh Toán</a> </button>
+                                    <a href="/cart/payment"> <button id = "btn_payment"> Thanh Toán </button></a>
                      <button>Giỏ Hàng</button>
                     </div>`
                                 )
@@ -272,13 +271,13 @@ else {
                             `
         <div class="cart_product">
             <input type="checkbox" name="val" class="val" value="${data[i].id}">
-            <img src="${data[i].img}"
+            <img src="/${data[i].img}"
             alt="">
             <div class="cart-title">
                 <p>${data[i].productname}</p>
                 <div class="cart_price">
                     <input value='${data[i].id}' hidden>
-                    <p>${data[i].offprice}</p>
+                    <p>${data[i].offprice}</p> 
                     <input type="number" name="" class="cart_number" id="cart_number" value="1">
                     <p class='del_item'>x</p>
                 </div>
@@ -292,7 +291,7 @@ else {
                     if (data.length > 0) {
                         $('.cart_scroll').append(
                             `<div class="cart_btn">
-                           <button id = "btn_payment">  <a href="/cart/payment">Thanh Toán</a> </button>
+                           <a href="/cart/payment"> <button id = "btn_payment"> Thanh Toán </button></a>
                                        <button>Giỏ Hàng</button>
             </div>`
                         )
@@ -376,4 +375,63 @@ else {
     })
 
 
+    //     $.ajax({
+    //     url: "/product/send/api",
+    //     type: "get",
+
+    //     success: (data) => {
+    //         $('#search').on('input', function (e) {
+    //             data.forEach(function (element, i) {
+
+    //                 console.log(element.productname === e.target.value);
+    //                 if (element.productname == e.target.value)
+    //                     console.log('a');
+    //             })
+    //         })
+
+    //     },
+    //     error: (error) => { }
+
+    // })
+
 }
+
+$('#search').on('input', function (e) {
+    console.log($(this).val());
+    $.ajax({
+        url: "/product/send/api",
+        type: "post",
+        cache: false,
+
+        data: {
+            name: $(this).val()
+        },
+        success: (data) => {
+            if (data.length) {
+                $('.header__search-history').removeClass('hidden')
+                $('.header__search-history-list').html('')
+                for (var i = 0; i < 5; i++) {
+                    $('.header__search-history-list').append(`
+                             <li class="header__search-history-item">
+                            <a href="/product/${data[i].id}">${data[i].productname}</a>
+                        </li>
+                        `)
+                }
+            }
+            else {
+                $('.header__search-history-list').html('')
+                $('.header__search-history-list').html(' <p class="header__search--none">Không Có Dữ Liệu</p>')
+
+            }
+
+
+        },
+        error: (error) => { }
+    })
+    if ($(this).val() == '') {
+
+        $('.header__search-history-list').html(' <p class="header__search--none">Không Có Dữ Liệu</p>')
+    }
+
+
+})

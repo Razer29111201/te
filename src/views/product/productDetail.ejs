@@ -28,10 +28,14 @@
                         <i class="fa fa-caret-right fa-fw"></i>
                         <a href="">Sản Phẩm</a>
                         <i class="fa fa-caret-right fa-fw"></i>
-                        <a href="">Cây Hoa Hồng Môn</a>
+                        <a href="">
+                            <%= product.productname %>
+                        </a>
                     </div>
                     <div class="product-title">
-                        <h1>Cây Hoa Hồng Môn</h1>
+                        <h1>
+                            <%= product.productname %>
+                        </h1>
                         <div class="product-vote">
                             <i class='bx bxs-star'></i>
                             <i class='bx bxs-star'></i>
@@ -50,6 +54,7 @@
                         </div>
                         <div class="col m--6">
                             <div class="product-price">
+                                <input type="text" id="Productid" value="<%= product.id %>" hidden>
                                 <h2>
                                     <%= product.offprice %>đ
                                 </h2>
@@ -78,7 +83,7 @@
                                 </div>
                                 <div class="product-buy">
                                     <input type="number" min="1" max="10" value="1">
-                                    <button>
+                                    <button id="btn">
                                         <i class='bx bx-cart-add'></i>
                                         MUA NGAY
                                     </button>
@@ -227,7 +232,31 @@
                         dashboard(index)
                     }
                 })
+
+
+                $('#btn').click(function () {
+                    var val = $('#Productid').val()
+                    $.ajax({
+                        url: "/cart",
+                        type: "post",
+                        dataType: "text",
+                        data: {
+                            idproduct: val
+                        },
+                        success: (data) => {
+                            console.log(data);
+                            if (data) {
+                                alert('Bạn Đã Thêm Sản Phẩm Từ Trước Đố')
+                            }
+                        },
+                        error: (error) => { }
+
+                    })
+                    location.reload()
+                })
+
             </script>
+
 
 </body>
 

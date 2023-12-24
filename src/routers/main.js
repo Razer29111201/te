@@ -7,11 +7,12 @@ import about from "./about.js"
 import cart from "./cart.js"
 import { checkrole } from '../controller/accController.js';
 import acc from "./acc.js"
-import { getHomePage, getContact } from "../controller/mainController.js";
+import { getHomePage, getContact, sucess } from "../controller/mainController.js";
 
 let router = express.Router()
 const initRouter = (app) => {
     app.get('/', getHomePage)
+    app.get('/sucess', sucess)
     app.get('/contact', getContact)
     app.use('/user', user)
     app.use('/news', news)

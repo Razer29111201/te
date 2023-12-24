@@ -93,6 +93,10 @@
     color: #fff;
 }
 
+.nav-search input:focus~.header__search-history {
+    display: block;
+}
+
 .nav-search input::placeholder {
     color: #fff;
 }

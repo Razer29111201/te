@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="tviewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/grid.css">
+    <link rel="stylesheet" href="/css/cart/payment.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>Document</title>
+    <style>
+        .idproduct {
+            display: flex;
+            align-items: center;
+        }
+
+
+        .product_header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: #49b14d;
+
+        }
+
+        .idproduct {
+            flex: 1;
+        }
+
+        .product h2 {
+            flex: 1;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="body">
+        <%- include('../partials/header'); %>
+            <div class="grid wide">
+                <h1>Đơn Mua</h1>
+                <h2>Đang giao</h2>
+                <% for (var i=0; i < loading.length; i++ ) { %>
+                    <div class="product">
+                        <div class="product_header">
+                            <div class="idproduct">
+                                <span>Mã Đơn Hàng:</span>
+                                <h2>
+                                    <%= idorder[i] %>
+                                </h2>
+
+                            </div>
+                            <div class="_product_price">
+                                Đơn giá
+                            </div>
+                            <div class="_product_solouong">
+                                Số lượng
+
+                            </div>
+                            <div class="_product_total">
+                                Thành tiền
+
+                            </div>
+
+                        </div>
+                        <% for (var j=0; j < loading[i].length; j++ ) { %>
+                            <div class="product_details">
+                                <div class="product_img">
+
+                                    <img src="/<%= loading[i][j].img %>" alt="">
+                                </div>
+                                <div class="product_title">
+                                    <p>
+                                        <%= loading[i][j].productname %>
+                                    </p>
+                                </div>
+                                <div class="product_price">
+                                    <p>
+                                        <%= loading[i][j].price %>
+                                    </p>
+                                </div>
+                                <div class="product_soluong">
+                                    <p>
+                                        <%= loading[i][j].soluong %>
+                                    </p>
+                                </div>
+                                <div class="product_total">
+                                    <p>
+                                        <%= loading[i][j].soluong * loading[i][j].price %>
+                                    </p>
+                                </div>
+                            </div>
+                            <% } %>
+
+
+
+
+
+                    </div>
+
+                    <div class="product-total">
+                        <span>Tổng số tiền: </span>
+                        <span>
+                            <%= totalload[i] %>đ
+                        </span>
+                    </div>
+                    <% } %>
+                        <h2>Đã Nhận</h2>
+                        <% for (var i=0; i < suscess.length; i++ ) { %>
+                            <div class="product">
+                                <div class="product_header">
+                                    <div class="idproduct">
+                                        <span>Mã Đơn Hàng:</span>
+                                        <h2>
+                                            <%= sussorder[i] %>
+                                        </h2>
+
+                                    </div>
+                                    <div class="_product_price">
+                                        Đơn giá
+                                    </div>
+                                    <div class="_product_solouong">
+                                        Số lượng
+
+                                    </div>
+                                    <div class="_product_total">
+                                        Thành tiền
+
+                                    </div>
+
+                                </div>
+                                <% for (var j=0; j < suscess[i].length; j++ ) { %>
+                                    <div class="product_details">
+                                        <div class="product_img">
+
+                                            <img src="/<%= suscess[i][j].img %>" alt="">
+                                        </div>
+                                        <div class="product_title">
+                                            <p>
+                                                <%= suscess[i][j].productname %>
+                                            </p>
+                                        </div>
+                                        <div class="product_price">
+                                            <p>
+                                                <%= suscess[i][j].price %>
+                                            </p>
+                                        </div>
+                                        <div class="product_soluong">
+                                            <p>
+                                                <%= suscess[i][j].soluong %>
+                                            </p>
+                                        </div>
+                                        <div class="product_total">
+                                            <p>
+                                                <%= suscess[i][j].soluong * suscess[i][j].price %>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <% } %>
+
+
+
+
+
+                            </div>
+
+                            <div class="product-total">
+                                <span>Tổng số tiền: </span>
+                                <span>
+                                    <%= totalsuss[i] %>đ
+                                </span>
+                            </div>
+                            <% } %>
+                                <h2>Đã Hủy</h2>
+                                <% for (var i=0; i < suscess.length; i++ ) { %>
+                                    <div class="product">
+                                        <div class="product_header">
+                                            <div class="idproduct">
+                                                <span>Mã Đơn Hàng:</span>
+                                                <h2>
+                                                    <%= deleteorder[i] %>
+                                                </h2>
+
+                                            </div>
+                                            <div class="_product_price">
+                                                Đơn giá
+                                            </div>
+                                            <div class="_product_solouong">
+                                                Số lượng
+
+                                            </div>
+                                            <div class="_product_total">
+                                                Thành tiền
+
+                                            </div>
+
+                                        </div>
+                                        <% for (var j=0; j < del[i].length; j++ ) { %>
+                                            <div class="product_details">
+                                                <div class="product_img">
+
+                                                    <img src="/<%= del[i][j].img %>" alt="">
+                                                </div>
+                                                <div class="product_title">
+                                                    <p>
+                                                        <%= del[i][j].productname %>
+                                                    </p>
+                                                </div>
+                                                <div class="product_price">
+                                                    <p>
+                                                        <%= del[i][j].price %>
+                                                    </p>
+                                                </div>
+                                                <div class="product_soluong">
+                                                    <p>
+                                                        <%= del[i][j].soluong %>
+                                                    </p>
+                                                </div>
+                                                <div class="product_total">
+                                                    <p>
+                                                        <%= del[i][j].soluong * del[i][j].price %>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <% } %>
+
+
+
+
+
+                                    </div>
+
+                                    <div class="product-total">
+                                        <span>Tổng số tiền: </span>
+                                        <span>
+                                            <%= totaldelete[i] %>đ
+                                        </span>
+                                    </div>
+                                    <% } %>
+
+            </div>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+            <script>
+
+
+            </script>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+            <script src="/js/user.js"></script>
+            <script src="/js/cart.js"></script>
+            <script>
+                $.ajax({
+                    url: '/cart/getpayment',
+                    type: 'get',
+                    success: function (data) {
+                        console.log(data);
+                        if (data) {
+                            $('#btn_payment').click(function () {
+                                var idorder = Math.floor(Math.random() * 100000)
+                                for (var i = 0; i < data.product.length; i++) {
+
+                                    console.log('a');
+                                    $.ajax({
+                                        url: "/cart/comfimpayment",
+                                        type: "post",
+                                        dataType: "text",
+                                        data: {
+                                            iduser: data.data.id,
+                                            idproduct: data.product[i].id,
+                                            total: data.a,
+                                            address: data.data.address,
+                                            num: data.num[i],
+                                            idorder: idorder
+                                        },
+                                        success: (data) => {
+                                            console.log(data);
+                                            if (data) {
+                                                alert('Bạn Đã Thêm Sản Phẩm Từ Trước Đố')
+                                            }
+                                        },
+                                        error: (error) => { }
+                                    })
+                                }
+                            })
+                        }
+                    }
+                })
+                $('#btn_change').click(function () {
+                    $('.bodyy').removeClass('hidden')
+                })
+                $('#exit>').click(function () {
+                    $('.bodyy').addClass('hidden')
+                })
+
+
+
+            </script>
+</body>
+
+
+</html>

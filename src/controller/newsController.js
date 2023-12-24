@@ -17,6 +17,7 @@ const getNewsdetail = async (req, res) => {
     const [news, newerr] = await pool.execute('SELECT * FROM `news`')
     const [newDetail, err] = await pool.execute('SELECT * FROM `news` WHERE `id` = ?', [id])
     res.render('news/newsDetails', { newss: newDetail[0], news: news })
+
 }
 
 export {

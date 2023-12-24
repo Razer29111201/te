@@ -384,3 +384,257 @@ body {
 .payment_btn p {
     color: #333;
 }
+
+.bodyy {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-color: rgba(150, 150, 150, 0.6);
+    z-index: 1000;
+}
+
+.container {
+    width: 500px;
+    background-color: white;
+    animation: adduser 0.3s ease-in;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+
+@keyframes adduser {
+    0% {
+        transform: translateY(-300px);
+
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+
+}
+
+.container form {
+    padding: 40px;
+}
+
+.title {
+    font-size: 25px;
+    line-height: 1.5;
+    font-weight: 700;
+    color: #fff;
+    padding: 10px 10px 10px 20px;
+    background-color: #00a400;
+
+}
+
+.full-name {
+    display: flex;
+    width: 100%;
+}
+
+.surname {
+    width: 100%;
+    margin-right: 20px;
+    position: relative;
+}
+
+.surname input {
+    width: 100%;
+    padding-left: 10px;
+    border-radius: 4px;
+    font-size: 14px;
+
+    border: 1px solid;
+    border-color: rgb(226, 226, 226);
+    background: rgba(192, 192, 192, 0.2);
+    outline: none;
+    line-height: 40px;
+}
+
+.surname input:focus {
+    border: 1px solid #49b152;
+}
+
+.surname div {
+    position: absolute;
+    width: 0;
+
+}
+
+.name {
+    width: 100%;
+
+    position: relative;
+}
+
+.name input {
+    width: 100%;
+    padding-left: 10px;
+    border-radius: 4px;
+    font-size: 14px;
+    border: 1px solid;
+    border-color: rgb(226, 226, 226);
+    background: rgba(192, 192, 192, 0.2);
+    outline: none;
+
+    line-height: 40px;
+
+}
+
+.name input:focus {
+    border: 1px solid #49b152;
+}
+
+.name div {
+    position: absolute;
+    width: 0;
+
+}
+
+.input-list {
+    width: 100%;
+    margin-top: 20px;
+    margin-right: 20px;
+    position: relative;
+}
+
+#cars {
+    width: 100%;
+    padding-left: 10px;
+    border-radius: 4px;
+    font-size: 14px;
+    height: 40px;
+    outline: none;
+    border: 1px solid rgb(187, 187, 187);
+    background: rgba(192, 192, 192, 0.2);
+}
+
+.input-list input {
+    width: 100%;
+    padding-left: 10px;
+    border-radius: 4px;
+    font-size: 14px;
+
+    border: 1px solid;
+    border-color: rgb(226, 226, 226);
+    background: rgba(192, 192, 192, 0.2);
+    outline: none;
+
+    line-height: 40px;
+
+}
+
+.input-list input:focus {
+    border: 1px solid #49b152;
+}
+
+.input-list div {
+    position: absolute;
+    width: 0;
+    border-bottom: 1px solid #77A7FF;
+    transition: 0.3s;
+}
+
+.input-list small {}
+
+.sex {
+    display: flex;
+    flex-wrap: wrap;
+
+}
+
+.sex-list {
+    border-radius: 4px;
+    margin: 8px 6px 6px;
+    flex: 1;
+    margin-bottom: 20px;
+    position: relative;
+    height: 40px;
+    border: 1px solid rgb(187, 187, 187);
+
+}
+
+.sex-list label {
+    line-height: 40px;
+    margin-left: 10px;
+
+}
+
+.sex-list input {
+    height: 100%;
+    margin: 0;
+    position: absolute;
+    right: 20px;
+}
+
+.vl {
+    display: none;
+}
+
+.vll {
+    display: block;
+}
+
+.note {
+    margin: 10px 0 30px;
+}
+
+.note span {
+    font-size: 14px;
+}
+
+.note a {
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.dieukhoan {
+    margin-bottom: 20px;
+}
+
+.dieukhoan span {
+    font-size: 14px;
+}
+
+.dieukhoan a {
+    text-decoration: none;
+    font-size: 14px;
+}
+
+
+.btnn button:hover {
+    background-color: #49b152;
+}
+
+.loi {
+    color: red;
+    position: absolute;
+    top: 44px;
+    left: 0;
+
+}
+
+.error {
+    color: rgb(255, 31, 31);
+}
+
+.hidden {
+    display: none;
+}
+
+#exit {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+}
+
+#exit i {
+
+    font-size: 45px;
+}

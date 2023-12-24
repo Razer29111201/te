@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="tviewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/base.css">
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/grid.css">
@@ -14,7 +14,53 @@
 </head>
 
 <body>
+    <div class="bodyy hidden">
 
+        <div class="container">
+            <h1 class="title">Thêm Địa Chỉ</h1>
+            <span id="exit"><i class='bx bx-x'></i></span>
+            <form action="/cart/setaddress" method="post">
+
+                <div class="input-list">
+
+
+                    <input type="text" name="t1" placeholder=" Địa Chỉ" id="t1">
+                    <div></div>
+                    <small></small>
+
+                </div>
+                <div class="input-list">
+
+
+                    <input type="text" name="t2" placeholder="Phường/Xã" id="t2">
+                    <div></div>
+                    <small></small>
+
+                </div>
+                <div class="input-list">
+
+                    <input type="text" name="t3" placeholder="Quận/Huyện" id="t3">
+                    <div></div>
+                    <small></small>
+                </div>
+                <div class="input-list">
+
+                    <input type="text" name="t4" placeholder="Tỉnh/Thành Phố" id="t4">
+                    <div></div>
+                    <small></small>
+                </div>
+
+                <div class="btn">
+                    <button id="change" type="submit"> Thêm</button>
+                </div>
+
+
+
+
+
+            </form>
+        </div>
+    </div>
     <div class="body">
         <%- include('../partials/header'); %>
             <div class="grid wide">
@@ -24,21 +70,26 @@
                         <i class='bx bxs-location-plus'></i>
                         Địa Chỉ Nhận Hàng
                         <div class="address_details">
-                            <!-- <div class="address_name">
-                            Lê Đình Việt
-                        </div>
-                        <div class="address_number">
-                            (+84)833988758
-                        </div>
-                        <div class="address_">
-                            1 Trường Phúc- Trường minh, Xã Trường Minh, Huyện Nông Cống, Thanh Hóa
+                            <% if (data.address) { %>
+                                <div class="address_name">
+                                    <%=data.Name %>
+                                </div>
+                                <div class="address_number">
+                                    <%=data.NPhone %>
+                                </div>
+                                <div class="address_">
+                                    <%=data.address %>
 
-                        </div> -->
-                            <div class="address_none">
+                                </div>
+                                <%} else { %>
+                                    <div class="address_none">
 
-                                <p>Bạn Chưa Nhập Địa Chỉ</p>
-                                <a href="">Thay Đổi</a>
-                            </div>
+                                        <p>Bạn Chưa Nhập Địa Chỉ</p>
+                                        <span id="btn_change">Thay Đổi</span>
+                                    </div>
+                                    <% } %>
+
+
                         </div>
                     </div>
                 </div>
@@ -154,7 +205,7 @@
                             và
                             Điều
                             kiện của hợp đồng Bảo hiểm</p>
-                        <button id="btn_payment"> Đặt Hàng</button>
+                        <button id="btn_payment" style="cursor: pointer;"> Đặt Hàng</button>
                     </div>
                 </div>
 
@@ -174,35 +225,45 @@
             type: 'get',
             success: function (data) {
                 console.log(data);
-                if (data) {
-                    $('#btn_payment').click(function () {
-                        for (var i = 0; i < data.product.length; i++) {
 
-                            console.log('a');
-                            $.ajax({
-                                url: "/cart/comfimpayment",
-                                type: "post",
-                                dataType: "text",
-                                data: {
-                                    iduser: data.data.id,
-                                    idproduct: data.product[i].id,
-                                    total: data.a,
-                                    address: data.data.address,
-                                    num: data.num[i]
-                                },
-                                success: (data) => {
-                                    console.log(data);
-                                    if (data) {
-                                        alert('Bạn Đã Thêm Sản Phẩm Từ Trước Đố')
-                                    }
-                                },
-                                error: (error) => { }
-                            })
-                        }
-                    })
-                }
+                $('#btn_payment').click(function () {
+                    var idorder = Math.floor(Math.random() * 100000)
+                    for (var i = 0; i < data.product.length; i++) {
+                        $.ajax({
+                            url: "/cart/comfimpayment",
+                            type: "post",
+                            dataType: "text",
+                            data: {
+                                productname: data.product[i].productname,
+                                img: data.product[i].img,
+                                iduser: data.data.id,
+                                idproduct: data.product[i].id,
+                                total: data.a,
+                                address: data.data.address,
+                                num: data.num[i],
+                                idorder: idorder
+                            },
+                            success: (data) => {
+                                console.log('a');
+
+
+                                $(location).attr('href', '/sucess')
+
+                            },
+                            error: (error) => { }
+                        })
+                    }
+                })
+
             }
         })
+        $('#btn_change').click(function () {
+            $('.bodyy').removeClass('hidden')
+        })
+        $('#exit>').click(function () {
+            $('.bodyy').addClass('hidden')
+        })
+
 
 
     </script>

@@ -11,12 +11,25 @@ const getproduct = async (req, res) => {
     res.render('product/product.ejs', { products: products, news: news })
 }
 
+const getproductapi = async (req, res) => {
+
+    const [products, serr] = await pool.execute('SELECT * FROM `product` ORDER BY id DESC')
+    res.send(products)
+}
+const setproductapi = async (req, res) => {
+    console.log(req.body.name);
+    if (!req.body.name == '') {
+
+        const [name, err] = await pool.execute(`SELECT * FROM product WHERE productname LIKE N'%${req.body.name}%'`)
+        res.json(name)
+    }
+}
 const getProductdetail = async (req, res) => {
     var id = req.params.id
     const [news, newerr] = await pool.execute('SELECT * FROM `news`')
     const [productDetail, err] = await pool.execute('SELECT * FROM `product` WHERE `id` = ?', [id])
     const [products, serr] = await pool.execute('SELECT * FROM `product`')
-    console.log(productDetail[0]);
+
     res.render('product/productDetail.ejs', { product: productDetail[0], news: news, products: products })
 }
 const getproductcate = async (req, res) => {
@@ -67,5 +80,5 @@ const getCart = async (req, res) => {
 
 }
 export {
-    getProductdetail, getproduct, getproductcate, getCart
+    getProductdetail, getproduct, getproductcate, getCart, getproductapi, setproductapi
 }

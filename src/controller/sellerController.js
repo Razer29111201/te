@@ -2,10 +2,10 @@ import pool from "../configs/connerDB.js";
 
 
 const getSeler = async (req, res) => {
-    const [acc, err] = await pool.execute('SELECT * FROM `user` ')
-    const [product, err1] = await pool.execute('SELECT * FROM `product` ')
-    const [slide, err2] = await pool.execute('SELECT * FROM `discount information`')
-    const [news, err3] = await pool.execute('SELECT * FROM `news` ')
+    const [acc, err] = await pool.execute('SELECT * FROM `user`ORDER BY id DESC ')
+    const [product, err1] = await pool.execute('SELECT * FROM `product`ORDER BY id DESC ')
+    const [slide, err2] = await pool.execute('SELECT * FROM `discount information`ORDER BY id DESC')
+    const [news, err3] = await pool.execute('SELECT * FROM `news` ORDER BY id DESC')
     res.render('admin/admin', { acc: acc, product: product, slide: slide, news: news })
 }
 const setproduct = async (req, res) => {
@@ -118,6 +118,49 @@ const deleteproduct = async (req, res) => {
         console.log('a');
     }
 }
+const editnews = async (req, res) => {
+    var id = req.params.id
+    try {
+        var [news, err] = await pool.execute("SELECT * FROM `news` WHERE `id` =? ", [id])
+        console.log(news[0]);
+        res.render('seller/editNews', { news: news[0] })
+    } catch (error) {
+
+    }
+}
+
+const seteditNews = async (req, res) => {
+    var file = req.file.path.split('\\').splice(2).join('/')
+    var today = new Date()
+    today = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate()
+    console.log(today);
+
+    await pool.execute("UPDATE `news` SET `Title`=?,`img`=?,`Content`=?,`date`=? WHERE `id` = ?", [req.body.title, file, req.body.content, today, req.body.id])
+    res.redirect('/seller/?query=3')
+
+
+
+
+
+}
+const deletenews = async (req, res) => {
+    var id = req.body.id
+
+    try {
+        for (var i = 0; i < id.length; i++) {
+            var data = parseInt(id[i])
+
+            await pool.execute('DELETE FROM `news` WHERE `id` = ?', [data])
+
+        }
+        res.json('oke')
+        console.log('b');
+    }
+    catch {
+        console.log('a');
+    }
+}
+
 export {
-    getSeler, setproduct, getNew, setNews, deleteuser, edituser, adduser, getproduct, editproduct, geteditproduct, deleteproduct
+    getSeler, setproduct, getNew, setNews, deleteuser, edituser, adduser, getproduct, editproduct, geteditproduct, deleteproduct, editnews, seteditNews, deletenews
 }

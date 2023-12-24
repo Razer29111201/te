@@ -73,6 +73,7 @@ const setRegister = async (req, res, next) => {
     var idcard = Math.floor(Math.random() * 10000000);
     try {
         await pool.execute("INSERT INTO `user`(`Name`, `user`, `pass`, `NPhone`, `Email`, `role`, `idCart`) VALUES (?,?,?,?,?,?,?)", [req.body.name, req.body.user, req.body.pass, req.body.nber, req.body.email, 1, idcard])
+        res.redirect('/account')
     }
     catch {
         console.log('lỗi ha');
